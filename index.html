@@ -2,988 +2,384 @@
 <html lang="es">
 <head>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2787460707329873"
-     crossorigin="anonymous"></script>
+     crossorigin="anonymous"></script> 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DOTEC | Desarrollo con Orientación Tecnológica</title>
-    <!-- Carga de Tailwind CSS para un diseño responsivo y moderno -->
+    
+    <!-- SEO & Metadatos (Vital para Google y Redes Sociales) -->
+    <title>DOTEC | Recursos de Robótica, Electrónica y Programación</title>
+    <meta name="description" content="Plataforma líder en recursos tecnológicos: cursos de programación, diagramas electrónicos, planos de robots, libros y herramientas de trading. Descargas gratuitas y premium.">
+    <meta name="keywords" content="robotica, arduino, esp32, cursos programación, diagramas electronicos, trading brokers, libros ingenieria">
+    <meta name="author" content="DOTEC">
+    
+    <!-- Open Graph / Facebook / WhatsApp -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://dotec.online/">
+    <meta property="og:title" content="DOTEC | Desarrollo con Orientación Tecnológica">
+    <meta property="og:description" content="Recursos gratuitos y premium para makers y desarrolladores. Cursos, planos y más.">
+    <!-- Imagen genérica para compartir (puedes cambiarla luego por tu logo real alojado) -->
+    <meta property="og:image" content="https://ui-avatars.com/api/?name=DOTEC&background=4f46e5&color=fff&size=512">
+
+    <!-- Preconexión a CDNs para carga rápida -->
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="preconnect" href="https://unpkg.com">
+
+    <!-- Carga de Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Carga de Lucide Icons para iconos visuales -->
+    
+    <!-- Carga de Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
+
     <style>
-        /* Configuración global de la fuente y estilos base */
-        :root {
-            --primary-color: #4f46e5; /* Indigo 600 */
-        }
-        body {
-            font-family: 'Inter', sans-serif;
-            min-height: 100vh;
-        }
-        .card-button {
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-        .card-button:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.5), 0 4px 6px -2px rgba(79, 70, 229, 0.2);
-        }
-        /* Estilo para la etiqueta de precio */
-        .badge {
-            padding: 4px 8px;
-            border-radius: 9999px;
-            font-size: 0.75rem;
-            font-weight: 600;
-        }
-        /* Estilos específicos para el Modal */
-        .modal {
-            transition: opacity 0.3s ease-in-out;
-            pointer-events: none;
-            opacity: 0;
-        }
-        .modal.active {
-            opacity: 1;
-            pointer-events: auto;
-        }
-        /* Estilo para el anuncio simulado */
-        .ad-unit {
-            background-color: #374151; /* gray-700 */
-            border: 1px dashed #4f46ee; /* indigo-600 */
-            color: #d1d5db; /* gray-300 */
-            text-align: center;
-            padding: 1rem;
-            margin: 2rem 0;
-            font-size: 0.875rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            border-radius: 0.5rem;
-        }
+        /* Optimización de Renderizado */
+        body { font-family: 'Inter', system-ui, -apple-system, sans-serif; }
+        
+        /* Estilos de Utilidad */
+        .card-button { transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); }
+        .card-button:hover { transform: translateY(-4px); box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.4); }
+        .card-button:active { transform: translateY(0); }
+        
+        .badge { padding: 4px 10px; border-radius: 9999px; font-size: 0.70rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; }
+        
+        /* Modal Optimizado */
+        .modal { transition: opacity 0.2s ease-in-out, visibility 0.2s; opacity: 0; visibility: hidden; }
+        .modal.active { opacity: 1; visibility: visible; }
+        
+        /* Ad Units (Espacios para publicidad) */
+        .ad-unit { background-color: rgba(55, 65, 81, 0.5); border: 1px dashed #6366f1; color: #9ca3af; display: flex; align-items: center; justify-content: center; flex-direction: column; border-radius: 0.75rem; transition: background-color 0.3s; }
+        .ad-unit:hover { background-color: rgba(55, 65, 81, 0.8); }
     </style>
 </head>
-<body class="bg-gray-900 text-gray-100 antialiased">
+<body class="bg-gray-950 text-gray-100 antialiased min-h-screen flex flex-col">
 
-    <!-- CABECERA PRINCIPAL CON LOGO SVG INTEGRADO -->
-    <header class="bg-gray-800 shadow-xl py-6 md:py-8">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-center md:justify-start">
-            
-            <!-- LOGO BLOCK (Icono SVG + Texto) -->
-            <div class="flex items-center space-x-3 sm:space-x-4">
-                
-                <!-- Icono SVG que forma la letra "D" de manera modular y clara -->
-                <svg class="w-10 h-10 md:w-12 md:h-12 text-indigo-500 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="currentColor">
-                    <!-- Componente 1: Barra vertical izquierda (la espina de la D) -->
-                    <rect x="0" y="0" width="25" height="100" rx="5" />
-                    <!-- Componente 2: Barra horizontal superior -->
-                    <rect x="25" y="0" width="50" height="25" rx="5" />
-                    <!-- Componente 3: Barra horizontal inferior -->
-                    <rect x="25" y="75" width="50" height="25" rx="5" />
-                    <!-- Componente 4: Barra vertical derecha (cierra la "panza" de la D) -->
-                    <rect x="75" y="25" width="25" height="50" rx="5" />
+    <!-- HEADER SEMÁNTICO -->
+    <header class="bg-gray-900 border-b border-gray-800 sticky top-0 z-40 backdrop-blur-md bg-opacity-90">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <div class="flex items-center justify-center md:justify-start space-x-4">
+                <!-- Logo Optimizado (SVG Inline para carga instantánea) -->
+                <svg class="w-10 h-10 text-indigo-500 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="currentColor" aria-label="Logo DOTEC">
+                    <rect x="0" y="0" width="25" height="100" rx="4" />
+                    <rect x="25" y="0" width="50" height="25" rx="4" />
+                    <rect x="25" y="75" width="50" height="25" rx="4" />
+                    <rect x="75" y="25" width="25" height="50" rx="4" />
                 </svg>
-                
-                <!-- Contenido de Texto del Logo -->
                 <div class="text-left">
-                    <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight text-white leading-tight">
-                        DOTEC
-                    </h1>
-                    <p class="mt-0 text-sm md:text-base font-light text-indigo-400 leading-snug">
-                        Desarrollo con orientación tecnológica
-                    </p>
+                    <h1 class="text-2xl md:text-3xl font-extrabold tracking-tight text-white leading-none">DOTEC</h1>
+                    <p class="text-xs md:text-sm font-medium text-indigo-400">Desarrollo con Orientación Tecnológica</p>
                 </div>
             </div>
-            
         </div>
     </header>
 
-    <!-- CONTENIDO PRINCIPAL - GRID DE RECURSOS -->
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
-        <h2 class="text-3xl font-bold mb-8 text-center text-indigo-300">Explora Nuestros Recursos</h2>
-
-        <!-- GRID DE BOTONES/CARDS - Ajustado a 6 columnas -->
-        <div id="resource-grid" class="grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-6 md:gap-8">
-
-            <!-- Card: Cursos -->
-            <button class="card-button bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-700 hover:bg-indigo-600 hover:border-indigo-600 focus:outline-none focus:ring-4 focus:ring-indigo-500/50" data-page="cursos">
-                <div class="text-center">
-                    <i data-lucide="graduation-cap" class="w-10 h-10 mx-auto mb-3 text-indigo-400"></i>
-                    <span class="text-xl font-semibold block">Cursos</span>
-                    <p class="text-sm text-gray-400 mt-1">Aprende a tu ritmo.</p>
-                </div>
-            </button>
-
-            <!-- Card: Diagramas -->
-            <button class="card-button bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-700 hover:bg-indigo-600 hover:border-indigo-600 focus:outline-none focus:ring-4 focus:ring-indigo-500/50" data-page="diagramas">
-                <div class="text-center">
-                    <i data-lucide="layout-grid" class="w-10 h-10 mx-auto mb-3 text-indigo-400"></i>
-                    <span class="text-xl font-semibold block">Diagramas</span>
-                    <p class="text-sm text-gray-400 mt-1">Flujos y esquemas.</p>
-                </div>
-            </button>
-
-            <!-- Card: Modelos de Robots -->
-            <button class="card-button bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-700 hover:bg-indigo-600 hover:border-indigo-600 focus:outline-none focus:ring-4 focus:ring-indigo-500/50" data-page="robots">
-                <div class="text-center">
-                    <i data-lucide="bot" class="w-10 h-10 mx-auto mb-3 text-indigo-400"></i>
-                    <span class="text-xl font-semibold block">Robots</span>
-                    <p class="text-sm text-gray-400 mt-1">Diseño y simulación.</p>
-                </div>
-            </button>
-
-            <!-- Card: Libros -->
-            <button class="card-button bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-700 hover:bg-indigo-600 hover:border-indigo-600 focus:outline-none focus:ring-4 focus:ring-indigo-500/50" data-page="libros">
-                <div class="text-center">
-                    <i data-lucide="book-open" class="w-10 h-10 mx-auto mb-3 text-indigo-400"></i>
-                    <span class="text-xl font-semibold block">Libros</span>
-                    <p class="text-sm text-gray-400 mt-1">Lecturas recomendadas.</p>
-                </div>
-            </button>
-
-            <!-- Card: Software/Herramientas -->
-            <button class="card-button bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-700 hover:bg-indigo-600 hover:border-indigo-600 focus:outline-none focus:ring-4 focus:ring-indigo-500/50" data-page="software">
-                <div class="text-center">
-                    <i data-lucide="wrench" class="w-10 h-10 mx-auto mb-3 text-indigo-400"></i>
-                    <span class="text-xl font-semibold block">Software</span>
-                    <p class="text-sm text-gray-400 mt-1">Herramientas esenciales.</p>
-                </div>
-            </button>
-            
-            <!-- Card: Inversiones (NUEVA SECCIÓN) -->
-            <button class="card-button bg-indigo-600 p-6 rounded-xl shadow-lg border border-gray-700 ring-4 ring-indigo-500/50 hover:bg-indigo-600 hover:border-indigo-600 focus:outline-none focus:ring-4 focus:ring-indigo-500/50" data-page="inversiones">
-                <div class="text-center">
-                    <i data-lucide="trending-up" class="w-10 h-10 mx-auto mb-3 text-white"></i>
-                    <span class="text-xl font-semibold block">Inversiones</span>
-                    <p class="text-sm text-indigo-200 mt-1">Brokers y trading.</p>
-                </div>
-            </button>
-            
-        </div>
+    <!-- MAIN CONTENT -->
+    <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12 w-full">
         
-        <!-- UNIDAD DE ANUNCIO SUPERIOR (Adsense o Red de Display) -->
-        <div class="ad-unit max-w-4xl mx-auto h-24 md:h-32">
-            <span class="font-semibold">ANUNCIO DISPLAY DOTEC (728x90)</span>
-            <span class="text-xs mt-1 text-gray-500">Espacio de monetización: Genera ingresos por impresiones.</span>
-        </div>
+        <!-- NAVEGACIÓN PRINCIPAL (GRID) -->
+        <nav aria-label="Categorías de recursos" class="mb-12">
+            <h2 class="sr-only">Categorías</h2>
+            <!-- Grid responsivo de 6 columnas -->
+            <div id="nav-grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-6">
+                <!-- Los botones se generarán dinámicamente -->
+            </div>
+        </nav>
 
-        <!-- Área de contenido dinámico (ahora renderizará la lista de robots) -->
-        <div id="content-area" class="mt-8 p-0 bg-gray-800 rounded-xl border border-gray-700">
-            <!-- El contenido se inyecta aquí por JavaScript -->
-        </div>
+        <!-- ESPACIO PUBLICITARIO SUPERIOR -->
+        <aside class="ad-unit w-full h-24 mb-8" aria-label="Publicidad Superior">
+            <span class="font-semibold text-sm">ANUNCIO DOTEC (728x90)</span>
+            <span class="text-xs text-gray-500">Espacio reservado para AdSense/Display</span>
+        </aside>
 
-        <!-- UNIDAD DE ANUNCIO INFERIOR (Adsense o Red de Display) -->
-        <div class="ad-unit max-w-4xl mx-auto h-32 md:h-48">
-            <span class="font-semibold">ANUNCIO DISPLAY DOTEC (300x250)</span>
-            <span class="text-xs mt-1 text-gray-500">Espacio de monetización: Publicidad de contenido relacionado.</span>
-        </div>
+        <!-- ÁREA DE CONTENIDO DINÁMICO -->
+        <section id="content-area" class="bg-gray-900/50 rounded-2xl border border-gray-800 min-h-[400px]">
+            <!-- El contenido se inyecta aquí -->
+            <div class="flex items-center justify-center h-full p-12 text-gray-500">
+                <div class="text-center">
+                    <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-500 mx-auto mb-4"></div>
+                    <p>Cargando recursos...</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ESPACIO PUBLICITARIO INFERIOR -->
+        <aside class="ad-unit w-full h-32 mt-8" aria-label="Publicidad Inferior">
+            <span class="font-semibold text-sm">ANUNCIO DOTEC (Banner)</span>
+            <span class="text-xs text-gray-500">Espacio reservado para AdSense/Display</span>
+        </aside>
 
     </main>
 
-    <!-- PIE DE PÁGINA -->
-    <footer class="bg-gray-800 py-6 mt-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-400 text-sm">
-            <p>&copy; 2024 DOTEC. Desarrollo con Orientación Tecnológica.</p>
-            <p class="mt-1">Recursos Gratuitos y Donaciones. ¡Gracias por tu apoyo!</p>
+    <!-- FOOTER -->
+    <footer class="bg-gray-900 border-t border-gray-800 py-8 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 text-center text-gray-500 text-sm">
+            <p>&copy; 2025 DOTEC. Todos los derechos reservados.</p>
+            <div class="mt-2 space-x-4">
+                <a href="#" class="hover:text-indigo-400 transition-colors">Términos</a>
+                <a href="#" class="hover:text-indigo-400 transition-colors">Privacidad</a>
+                <a href="#" class="hover:text-indigo-400 transition-colors">Contacto</a>
+            </div>
         </div>
     </footer>
 
-    <!-- MODAL DE DONACIONES (Oculto por defecto) -->
-    <div id="donation-modal" class="modal fixed inset-0 z-50 flex items-center justify-center p-4 bg-gray-900/80 backdrop-blur-sm" onclick="hideDonationModal(event)">
-        
-        <div class="bg-gray-800 rounded-xl shadow-2xl w-full max-w-md p-6 sm:p-8 border border-indigo-500" onclick="event.stopPropagation()">
-            <div class="flex justify-between items-start mb-6">
-                <h3 class="text-2xl font-bold text-indigo-400 flex items-center">
-                    <i data-lucide="hand-heart" class="w-6 h-6 mr-2"></i> Apoya el Proyecto
+    <!-- MODAL DE DONACIONES (Optimizado) -->
+    <div id="donation-modal" class="modal fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm" role="dialog" aria-modal="true">
+        <div class="bg-gray-800 rounded-2xl shadow-2xl w-full max-w-md p-6 border border-gray-700 relative overflow-hidden">
+            <!-- Decoración de fondo -->
+            <div class="absolute top-0 right-0 -mt-4 -mr-4 w-24 h-24 bg-indigo-500/20 rounded-full blur-2xl"></div>
+
+            <div class="flex justify-between items-start mb-6 relative z-10">
+                <h3 class="text-xl font-bold text-white flex items-center">
+                    <i data-lucide="heart" class="w-5 h-5 mr-2 text-pink-500 fill-current"></i> Apoya a DOTEC
                 </h3>
-                <button onclick="hideDonationModal()" class="text-gray-400 hover:text-white transition-colors">
-                    <i data-lucide="x" class="w-6 h-6"></i>
+                <button onclick="app.closeModal()" class="text-gray-400 hover:text-white p-1 rounded-full hover:bg-gray-700 transition-colors">
+                    <i data-lucide="x" class="w-5 h-5"></i>
                 </button>
             </div>
 
-            <p class="text-gray-300 mb-6">
-                Tu donación nos ayuda a mantener los recursos gratuitos, servidores y crear nuevo contenido de robótica.
+            <p class="text-gray-300 text-sm mb-6 leading-relaxed">
+                Tu aporte mantiene los servidores activos y nos permite crear nuevos modelos robóticos gratuitos.
             </p>
 
-            <p class="text-sm font-semibold text-gray-400 mb-2">Selecciona un monto sugerido (USD):</p>
-            
-            <!-- Grid de Opciones de Donación -->
-            <div class="grid grid-cols-3 gap-3 mb-6">
-                <button class="donation-option bg-gray-700 hover:bg-indigo-600 transition-colors py-3 rounded-lg font-bold text-lg border border-gray-600" data-amount="5">$5</button>
-                <button class="donation-option bg-gray-700 hover:bg-indigo-600 transition-colors py-3 rounded-lg font-bold text-lg border border-gray-600" data-amount="10">$10</button>
-                <button class="donation-option bg-gray-700 hover:bg-indigo-600 transition-colors py-3 rounded-lg font-bold text-lg border border-gray-600" data-amount="25">$25</button>
+            <div class="grid grid-cols-3 gap-3 mb-4">
+                <button onclick="app.setDonation(5)" class="bg-gray-700 hover:bg-indigo-600 hover:text-white text-indigo-300 py-2 rounded-lg font-bold border border-gray-600 transition-all">$5</button>
+                <button onclick="app.setDonation(10)" class="bg-gray-700 hover:bg-indigo-600 hover:text-white text-indigo-300 py-2 rounded-lg font-bold border border-gray-600 transition-all">$10</button>
+                <button onclick="app.setDonation(25)" class="bg-gray-700 hover:bg-indigo-600 hover:text-white text-indigo-300 py-2 rounded-lg font-bold border border-gray-600 transition-all">$25</button>
             </div>
 
-            <input id="donation-input" type="number" placeholder="O ingresa otro monto" min="1" class="w-full bg-gray-700 p-3 rounded-lg border border-gray-600 text-white placeholder-gray-500 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 mb-6"/>
+            <div class="relative mb-6">
+                <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">$</span>
+                <input id="donation-input" type="number" placeholder="Otro monto" class="w-full bg-gray-900 pl-8 pr-4 py-3 rounded-lg border border-gray-600 text-white focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition-all"/>
+            </div>
 
-            <!-- Botones de Pasarela de Pago Simulados -->
-            <button id="donate-button" class="w-full py-3 rounded-lg text-white font-bold transition-colors bg-green-600 hover:bg-green-700 flex items-center justify-center mb-3" onclick="simulatePayment('Stripe')">
-                <i data-lucide="credit-card" class="w-5 h-5 mr-2"></i> Pagar con Tarjeta (Stripe)
-            </button>
-            <button class="w-full py-3 rounded-lg text-white font-bold transition-colors bg-blue-600 hover:bg-blue-700 flex items-center justify-center" onclick="simulatePayment('PayPal')">
-                <i data-lucide="wallet" class="w-5 h-5 mr-2"></i> Donar con PayPal
-            </button>
-
-            <p id="donation-status" class="mt-4 text-center text-sm text-yellow-400 hidden">¡Gracias por tu apoyo! Redireccionando a tu recurso...</p>
-
+            <div class="space-y-3">
+                <button onclick="app.processPayment('Stripe')" class="w-full py-3 rounded-lg text-white font-semibold bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-500 hover:to-blue-500 shadow-lg shadow-indigo-500/30 transition-all flex items-center justify-center">
+                    <i data-lucide="credit-card" class="w-4 h-4 mr-2"></i> Tarjeta / Stripe
+                </button>
+                <button onclick="app.processPayment('PayPal')" class="w-full py-3 rounded-lg text-white font-semibold bg-[#003087] hover:bg-[#00256b] transition-colors flex items-center justify-center">
+                    <i data-lucide="wallet" class="w-4 h-4 mr-2"></i> PayPal
+                </button>
+            </div>
+            
+            <div id="donation-feedback" class="mt-4 text-center text-xs font-medium hidden"></div>
         </div>
     </div>
-    <!-- FIN MODAL DE DONACIONES -->
 
+    <!-- LÓGICA DE LA APLICACIÓN (JAVASCRIPT) -->
     <script>
-        // Inicializa los iconos de Lucide
-        lucide.createIcons();
-
-        // ------------------------------------------
-        // LÓGICA DEL MODAL DE DONACIONES
-        // ------------------------------------------
-        const donationModal = document.getElementById('donation-modal');
-        const donationInput = document.getElementById('donation-input');
-        const donationStatus = document.getElementById('donation-status');
-        let currentResourceTitle = ''; 
-
-        // Muestra el modal, estableciendo el título del recurso y reseteando el estado
-        const showDonationModal = (title) => {
-            currentResourceTitle = title;
-            donationStatus.classList.add('hidden');
-            donationInput.value = ''; // Limpia el input
-            donationModal.classList.add('active');
-            lucide.createIcons(); // Recarga los iconos dentro del modal
-        }
-
-        // Oculta el modal
-        const hideDonationModal = (event) => {
-            if (event && event.target.id !== 'donation-modal') return; // Evita cerrar si clickea dentro del modal
-            donationModal.classList.remove('active');
-        }
-
-        // Simulación de Pago
-        const simulatePayment = (gateway) => {
-            let amount = parseFloat(donationInput.value) || 0;
+        // Objeto principal de la aplicación para evitar desorden
+        const app = {
+            currentResource: '',
             
-            if (amount < 1) {
-                // Usamos una notificación simple en lugar de alert()
-                document.getElementById('donation-status').textContent = 'Por favor, ingresa un monto de donación válido (mínimo $1).';
-                document.getElementById('donation-status').classList.remove('hidden');
-                document.getElementById('donation-status').classList.remove('text-yellow-400');
-                document.getElementById('donation-status').classList.add('text-red-400');
-                return;
-            }
-            
-            document.getElementById('donation-status').classList.remove('text-red-400');
-            document.getElementById('donation-status').classList.add('text-yellow-400');
-
-            console.log(`Simulando pago de $${amount} USD para el recurso: ${currentResourceTitle} vía ${gateway}.`);
-            
-            // Simulación de éxito del pago
-            donationStatus.textContent = `¡Donación de $${amount} USD exitosa! Abriendo ${currentResourceTitle} en 3 segundos...`;
-            donationStatus.classList.remove('hidden');
-            
-            // Simula la descarga o acceso al recurso después de 3 segundos
-            setTimeout(() => {
-                // Notificación de éxito en la consola
-                console.log(`¡Gracias! Acceso concedido a: ${currentResourceTitle}.`);
-                hideDonationModal();
-            }, 3000);
-        }
-
-        // Manejar clics en las opciones de donación predefinidas
-        document.querySelectorAll('.donation-option').forEach(button => {
-            button.addEventListener('click', (e) => {
-                const amount = e.target.getAttribute('data-amount');
-                donationInput.value = amount;
-            });
-        });
-
-
-        // ------------------------------------------
-        // ESTRUCTURA DE DATOS (Simulación de una API/DB)
-        // ------------------------------------------
-        const coursesData = [
-            {
-                id: 1,
-                title: "Introducción a JavaScript Moderno (ES6+)",
-                description: "Domina los fundamentos de JavaScript, desde variables hasta promesas y async/await.",
-                level: "Básico",
-                priceType: "FREE",
-                duration: "8 horas",
-                icon: "code",
-            },
-            {
-                id: 2,
-                title: "Desarrollo Full-Stack con Node.js y MongoDB",
-                description: "Crea aplicaciones web robustas desde el backend (Node) hasta el frontend (Vanilla JS/React).",
-                level: "Avanzado",
-                priceType: "PREMIUM",
-                price: "$49.99",
-                duration: "20 horas",
-                icon: "server-cog",
-            },
-            {
-                id: 3,
-                title: "Modelado 3D para Impresión con Blender",
-                description: "Aprende los conceptos básicos de Blender para diseñar modelos listos para imprimir en 3D.",
-                level: "Intermedio",
-                priceType: "DONATION",
-                duration: "12 horas",
-                icon: "cube",
-            },
-            {
-                id: 4,
-                title: "Introducción a la Programación de Microcontroladores (Arduino)",
-                description: "El punto de partida para proyectos de IoT y robótica con la plataforma Arduino.",
-                level: "Básico",
-                priceType: "FREE",
-                duration: "6 horas",
-                icon: "cpu",
-            },
-        ];
-
-        const diagramsData = [
-            {
-                id: 101,
-                title: "Fuente de Alimentación Regulada 5V",
-                description: "Diagrama esquemático y PCB para una fuente de 5V con el regulador LM7805. Ideal para prototipos.",
-                difficulty: "Básico",
-                fileType: "PDF, Fritzing",
-                priceType: "FREE",
-            },
-            {
-                id: 102,
-                title: "Amplificador de Audio Clase A (Low-Power)",
-                description: "Esquema completo y lista de materiales para construir un pequeño amplificador de baja potencia para altavoces de escritorio.",
-                difficulty: "Intermedio",
-                fileType: "PDF, EAGLE",
-                priceType: "DONATION",
-            },
-            {
-                id: 103,
-                title: "Control de Motor DC por Puente H (L298N)",
-                description: "Diagrama de conexión y esquemático del circuito de control de sentido y velocidad de un motor con el chip L298N.",
-                difficulty: "Básico",
-                fileType: "PDF, SVG",
-                priceType: "FREE",
-            },
-            {
-                id: 104,
-                title: "Oscilador Senoidal de Onda Cuadrada (555)",
-                description: "Uso del popular circuito integrado 555 en configuración Astable para generar pulsos estables.",
-                difficulty: "Básico",
-                fileType: "PDF",
-                priceType: "DONATION",
-            },
-        ];
-
-        const robotsData = [
-            {
-                id: 201,
-                title: "Brazo Robótico Básico de 2 Grados (Arduino UNO)",
-                description: "Modelo simple impreso en 3D con control de servomotores a través de Arduino. Excelente para principiantes.",
-                platform: "Arduino UNO",
-                components: "2 Servos, Impresión 3D",
-                priceType: "FREE",
-            },
-            {
-                id: 202,
-                title: "Brazo IoT con Pinza Inteligente (ESP32)",
-                description: "Brazo de 4 grados de libertad con conectividad WiFi. Controlado remotamente desde el navegador o una App.",
-                platform: "ESP32",
-                components: "4 Servos, Driver PWM, Módulos WiFi",
-                priceType: "DONATION",
-            },
-            {
-                id: 203,
-                title: "Robot Trazador de Líneas Modular (Micro:bit)",
-                description: "Un robot móvil y modular, ideal para el aprendizaje en escuelas. Incluye sensores de línea.",
-                platform: "Micro:bit",
-                components: "2 Motores DC, Shield Micro:bit, Sensor de Línea",
-                priceType: "FREE",
-            },
-            {
-                id: 204,
-                title: "Brazo de Clasificación por Color (Arduino Mega)",
-                description: "Brazo avanzado con 5 grados de libertad y sensor de color para clasificación de objetos pequeños.",
-                platform: "Arduino Mega",
-                components: "5 Servos de alta torsión, Sensor TCS3200",
-                priceType: "PREMIUM",
-            },
-        ];
-
-        const booksData = [
-            // Introducción a la Robótica (4)
-            { id: 301, title: "Introducción a la Robótica: Mecánica, Control y Programación", author: "John J. Craig", topic: "Robótica Introductoria", affiliateLink: "https://afiliado.com/dotec/craig_intro" },
-            { id: 302, title: "Robotics: Modelling, Planning and Control", author: "Bruno Siciliano", topic: "Robótica Introductoria", affiliateLink: "https://afiliado.com/dotec/siciliano_modelling" },
-            { id: 303, title: "Fundamentos de la Robótica", author: "M. Asfahl", topic: "Robótica Introductoria", affiliateLink: "https://afiliado.com/dotec/asfahl_fundamentos" },
-            { id: 304, title: "Princípios de Robótica", author: "Nilton J. P. E. O.", topic: "Robótica Introductoria", affiliateLink: "https://afiliado.com/dotec/principios_robotica" },
-
-            // Robótica Avanzada (4)
-            { id: 305, title: "A Mathematical Introduction to Robotic Manipulation", author: "Murray, Li, Sastry", topic: "Robótica Avanzada", affiliateLink: "https://afiliado.com/dotec/murray_manipulation" },
-            { id: 306, title: "Tópicos de Control Avanzado en Robótica", author: "G. V. V. R. T.", topic: "Robótica Avanzada", affiliateLink: "https://afiliado.com/dotec/topicos_control" },
-            { id: 307, title: "Planning Algorithms", author: "Steven M. LaValle", topic: "Robótica Avanzada", affiliateLink: "https://afiliado.com/dotec/lavalle_planning" },
-            { id: 308, title: "SLAM for Dummies: Simultaneous Localization and Mapping", author: "Varios Expertos", topic: "Robótica Avanzada", affiliateLink: "https://afiliado.com/dotec/slam_dummies" },
-            
-            // ROS 2 (4)
-            { id: 309, title: "ROS 2 in 5 Days", author: "Lentin Joseph", topic: "ROS 2", affiliateLink: "https://afiliado.com/dotec/ros2_5days" },
-            { id: 310, title: "The Construct: Mastering ROS 2 for Robotics Programming", author: "Ricardo Tellez", topic: "ROS 2", affiliateLink: "https://afiliado.com/dotec/construct_ros2" },
-            { id: 311, title: "Hands-On Robotics Programming with ROS", author: "Anil Mahtani", topic: "ROS 2", affiliateLink: "https://afiliado.com/dotec/hands_on_ros" },
-            { id: 312, title: "Learning ROS 2: Beginner's Guide", author: "Karthik D.", topic: "ROS 2", affiliateLink: "https://afiliado.com/dotec/learning_ros2" },
-
-            // Arduino UNO / Microcontroladores (5)
-            { id: 313, title: "Arduino Básico: Programación y Proyectos", author: "Oscar D. P.", topic: "Arduino / Microcontroladores", affiliateLink: "https://afiliado.com/dotec/arduino_basico" },
-            { id: 314, title: "Programming Arduino Getting Started with Sketches", author: "Simon Monk", topic: "Arduino / Microcontroladores", affiliateLink: "https://afiliado.com/dotec/monk_sketches" },
-            { id: 315, title: "Make: Electronics", author: "Charles Platt", topic: "Arduino / Microcontroladores", affiliateLink: "https://afiliado.com/dotec/make_electronics" },
-            { id: 316, title: "The 8051 Microcontroller and Embedded Systems", author: "Mazidi, McKinley, Causey", topic: "Arduino / Microcontroladores", affiliateLink: "https://afiliado.com/dotec/8051_embedded" },
-            { id: 317, title: "Microcontroller Projects with Arduino Uno", author: "Alvaro P.", topic: "Arduino / Microcontroladores", affiliateLink: "https://afiliado.com/dotec/arduino_projects" },
-
-            // Micro:bit / Educativa (3)
-            { id: 318, title: "Micro:bit for Mad Scientists", author: "Simon Monk", topic: "Micro:bit / Educativa", affiliateLink: "https://afiliado.com/dotec/microbit_mad" },
-            { id: 319, title: "Coding with Micro:bit in Python", author: "The Rolling W.", topic: "Micro:bit / Educativa", affiliateLink: "https://afiliado.com/dotec/microbit_python" },
-            { id: 320, title: "Hacking the Micro:bit", author: "Various Authors", topic: "Micro:bit / Educativa", affiliateLink: "https://afiliado.com/dotec/microbit_hacking" },
-            
-            // ESP32 (2)
-            { id: 321, title: "ESP32 For Dummies: IoT Development", author: "Randall B.", topic: "ESP32 / IoT", affiliateLink: "https://afiliado.com/dotec/esp32_dummies" },
-            { id: 322, title: "Programming the ESP32 with the Arduino IDE", author: "J. M. F. C.", topic: "ESP32 / IoT", affiliateLink: "https://afiliado.com/dotec/esp32_arduino" },
-        ];
-        
-        const softwareData = [
-            // IDEs y Editores de Código (5)
-            { id: 401, title: "Visual Studio Code (VSC)", description: "Editor de código ligero y potente. Esencial para casi cualquier lenguaje.", category: "IDEs y Editores", license: "Gratuito", icon: "code" },
-            { id: 402, title: "Arduino IDE 2.x", description: "Entorno oficial para programar placas Arduino, ESP32 y otros microcontroladores.", category: "IDEs y Editores", license: "Gratuito", icon: "circuit-board" },
-            { id: 403, title: "PlatformIO (Extensión VSC)", description: "Plataforma integrada para IoT que soporta más de 20 microcontroladores diferentes.", category: "IDEs y Editores", license: "Gratuito", icon: "server-cog" },
-            { id: 404, title: "Eclipse IDE for C/C++", description: "IDE tradicional para proyectos grandes, útil para desarrollo avanzado de sistemas embebidos.", category: "IDEs y Editores", license: "Gratuito", icon: "box" },
-            { id: 405, title: "PyCharm Professional", description: "El IDE más potente para desarrollo Python. La versión Pro tiene herramientas avanzadas.", category: "IDEs y Editores", license: "Afiliado/Pago", icon: "database" },
-
-            // Lenguajes y Compiladores (3)
-            { id: 406, title: "Python 3.x", description: "Lenguaje de alto nivel usado en robótica (ROS), IA y scripting.", category: "Lenguajes", license: "Gratuito", icon: "sparkles" },
-            { id: 407, title: "Java Development Kit (JDK)", description: "Necesario para correr y desarrollar aplicaciones en Java.", category: "Lenguajes", license: "Gratuito", icon: "coffee" },
-            { id: 408, title: "MinGW-w64 (GCC/G++)", description: "Colección de herramientas de desarrollo para compilación C/C++ en Windows.", category: "Lenguajes", license: "Gratuito", icon: "terminal" },
-
-            // Diseño, Simulación y Electrónica (7)
-            { id: 409, title: "Fritzing", description: "Software de código abierto para diseñar prototipos de electrónica (esquemáticos, PCB y protoboard).", category: "Diseño y Simulación", license: "Donación/Pago", icon: "grid-3x3" },
-            { id: 410, title: "Autodesk Fusion 360", description: "Software profesional de CAD/CAM para diseño 3D de modelos robóticos y piezas. (Versión gratuita disponible)", category: "Diseño y Simulación", license: "Afiliado/Pago", icon: "cube" },
-            { id: 411, title: "Tinkercad Circuits", description: "Simulador de circuitos online, ideal para pruebas rápidas de Arduino sin hardware.", category: "Diseño y Simulación", license: "Gratuito", icon: "infinity" },
-            { id: 412, title: "KiCad EDA", description: "Suite de software libre y open source para automatización de diseño electrónico (EDA).", category: "Diseño y Simulación", license: "Gratuito", icon: "clipboard-list" },
-            { id: 413, title: "Blender", description: "Software de modelado 3D profesional, ideal para diseñar carcasas y partes de robots.", category: "Diseño y Simulación", license: "Gratuito", icon: "layers-3" },
-            { id: 414, title: "MATLAB / Simulink", description: "Plataforma líder para análisis de datos, desarrollo de algoritmos de control y simulación de sistemas robóticos.", category: "Diseño y Simulación", license: "Afiliado/Pago", icon: "line-chart" },
-            { id: 415, title: "Eagle CAD (Autodesk)", description: "Herramienta popular para el diseño de PCB y esquemáticos. (Licencia gratuita limitada)", category: "Diseño y Simulación", license: "Afiliado/Pago", icon: "sparkles" },
-
-        ];
-        
-        const investmentData = [
-            // Brokers / Plataformas de Inversión (10)
-            { id: 501, title: "Interactive Brokers (IBKR)", description: "Líder global con acceso a múltiples mercados y bajos costos. Avanzado.", category: "Brokers Globales", type: "Afiliado", link: "https://afiliado.com/dotec/ibkr" },
-            { id: 502, title: "DeGiro", description: "Broker europeo con bajas comisiones para acciones y ETFs en Europa.", category: "Brokers Europeos", type: "Afiliado", link: "https://afiliado.com/dotec/degiro" },
-            { id: 503, title: "eToro", description: "Popular por su CopyTrading social. Bueno para principiantes.", category: "Trading Social", type: "Afiliado", link: "https://afiliado.com/dotec/etoro" },
-            { id: 504, title: "TradingView", description: "Plataforma esencial de gráficos y análisis técnico. (Afiliado por plan PRO).", category: "Herramientas de Análisis", type: "Afiliado", link: "https://afiliado.com/dotec/tradingview" },
-            { id: 505, title: "TD Ameritrade (Charles Schwab)", description: "Servicio premium en EE. UU. con la potente plataforma thinkorswim.", category: "Brokers USA", type: "Afiliado", link: "https://afiliado.com/dotec/tdameritrade" },
-            { id: 506, title: "XTB", description: "Broker con enfoque en el mercado Forex y CFDs con buen soporte educativo.", category: "Forex/CFDs", type: "Afiliado", link: "https://afiliado.com/dotec/xtb" },
-            { id: 507, title: "Binance", description: "Exchange de criptomonedas líder. Plataforma para trading y staking.", category: "Criptomonedas", type: "Afiliado", link: "https://afiliado.com/dotec/binance" },
-            { id: 508, title: "Hargreaves Lansdown (HL)", description: "Broker del Reino Unido, ideal para inversiones a largo plazo (ISAs/Pensions).", category: "Inversión a Largo Plazo", type: "Afiliado", link: "https://afiliado.com/dotec/hlansdown" },
-            { id: 509, title: "Plus500", description: "Plataforma de trading CFD con una interfaz simple y fácil de usar.", category: "Forex/CFDs", type: "Afiliado", link: "https://afiliado.com/dotec/plus500" },
-            { id: 510, title: "Fidelity Investments", description: "Broker de renombre para inversión tradicional, fondos mutuos y jubilación.", category: "Brokers USA", type: "Afiliado", link: "https://afiliado.com/dotec/fidelity" },
-        ];
-
-
-        // ------------------------------------------
-        // LÓGICA DE RENDERING DE PÁGINAS
-        // ------------------------------------------
-        const contentArea = document.getElementById('content-area');
-
-        // Función para renderizar la página de Cursos
-        const renderCursosPage = () => {
-            let html = `
-                <div class="p-8">
-                    <h3 class="text-3xl font-bold text-indigo-400 mb-2 flex items-center">
-                        <i data-lucide="graduation-cap" class="w-8 h-8 mr-3"></i> Cursos y Programas
-                    </h3>
-                    <p class="text-lg text-gray-400 mb-8">
-                        Explora nuestro catálogo. El contenido marcado como "Gratuito" es de acceso abierto. Si eliges la opción "Donación", nos apoyas a mantener la plataforma.
-                    </p>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            `;
-
-            coursesData.forEach(course => {
-                let badgeClass = '';
-                let priceText = '';
-                let buttonText = '';
-                let buttonClass = 'bg-indigo-600 hover:bg-indigo-700';
-                let action = '';
-
-                // Definición de estilos y textos según el tipo de monetización
-                switch (course.priceType) {
-                    case 'FREE':
-                        badgeClass = 'bg-green-600 text-green-100';
-                        priceText = 'Gratuito';
-                        buttonText = 'Ver Contenido';
-                        buttonClass = 'bg-green-600 hover:bg-green-700';
-                        action = `console.log('Simulación: Navegando al curso ${course.title}.')`;
-                        break;
-                    case 'PREMIUM':
-                        badgeClass = 'bg-yellow-600 text-yellow-100';
-                        priceText = `Premium - ${course.price}`;
-                        buttonText = 'Comprar Acceso';
-                        buttonClass = 'bg-yellow-600 hover:bg-yellow-700';
-                        action = `console.log('Simulación: Iniciando pago de ${course.price} para ${course.title}.')`;
-                        break;
-                    case 'DONATION':
-                        badgeClass = 'bg-indigo-600 text-indigo-100';
-                        priceText = 'Donación Voluntaria';
-                        buttonText = 'Acceder (¡Donar!)';
-                        buttonClass = 'bg-indigo-600 hover:bg-indigo-700';
-                        action = `showDonationModal('${course.title}')`; // Modificado para abrir el modal
-                        break;
+            // BASE DE DATOS UNIFICADA
+            data: {
+                categories: [
+                    { id: 'inversiones', label: 'Inversiones', icon: 'trending-up', sub: 'Brokers & Trading', color: 'indigo' },
+                    { id: 'cursos', label: 'Cursos', icon: 'graduation-cap', sub: 'Aprende hoy', color: 'indigo' },
+                    { id: 'diagramas', label: 'Diagramas', icon: 'layout-grid', sub: 'Circuitos listos', color: 'gray' },
+                    { id: 'robots', label: 'Robots', icon: 'bot', sub: 'Modelos 3D', color: 'gray' },
+                    { id: 'libros', label: 'Libros', icon: 'book-open', sub: 'Biblioteca', color: 'gray' },
+                    { id: 'software', label: 'Software', icon: 'wrench', sub: 'Herramientas', color: 'gray' }
+                ],
+                content: {
+                    cursos: [
+                        { title: "JS Moderno (ES6+)", desc: "Fundamentos de JavaScript, promesas y async.", meta: ["Básico", "8h"], type: "FREE" },
+                        { title: "Full-Stack Node/Mongo", desc: "Backend y Frontend robusto.", meta: ["Avanzado", "20h"], type: "PREMIUM", price: "$49.99" },
+                        { title: "Modelado 3D Blender", desc: "Diseña modelos para imprimir.", meta: ["Intermedio", "12h"], type: "DONATION" },
+                        { title: "Arduino Básico", desc: "IoT y robótica inicial.", meta: ["Básico", "6h"], type: "FREE" }
+                    ],
+                    diagramas: [
+                        { title: "Fuente 5V Regulada", desc: "Esquemático y PCB LM7805.", meta: ["Fácil", "PDF/Fritzing"], type: "FREE" },
+                        { title: "Amp Audio Clase A", desc: "Circuito de baja potencia.", meta: ["Medio", "EAGLE"], type: "DONATION" },
+                        { title: "Driver Motor L298N", desc: "Puente H para control DC.", meta: ["Fácil", "SVG"], type: "FREE" },
+                        { title: "Oscilador 555", desc: "Generador de pulsos astable.", meta: ["Fácil", "PDF"], type: "DONATION" }
+                    ],
+                    robots: [
+                        { title: "Brazo 2GDL Arduino", desc: "Impresión 3D + Servos.", meta: ["Arduino UNO", "Impresión 3D"], type: "FREE" },
+                        { title: "Brazo IoT ESP32", desc: "Control WiFi remoto.", meta: ["ESP32", "Web App"], type: "DONATION" },
+                        { title: "Robot Trazador", desc: "Móvil educativo.", meta: ["Micro:bit", "Sensores"], type: "FREE" },
+                        { title: "Clasificador Color", desc: "5GDL con sensor TCS3200.", meta: ["Mega", "Alto Torque"], type: "PREMIUM" }
+                    ],
+                    libros: [
+                        { title: "Intro a la Robótica", desc: "John J. Craig. La biblia de la mecánica.", meta: ["Teoría"], type: "AFFILIATE", link: "#" },
+                        { title: "ROS 2 in 5 Days", desc: "Lentin Joseph. Guía práctica rápida.", meta: ["ROS 2"], type: "AFFILIATE", link: "#" },
+                        { title: "Arduino Básico", desc: "Oscar D.P. Proyectos iniciales.", meta: ["Arduino"], type: "AFFILIATE", link: "#" },
+                        { title: "ESP32 For Dummies", desc: "IoT Development fácil.", meta: ["IoT"], type: "AFFILIATE", link: "#" }
+                    ],
+                    software: [
+                        { title: "VS Code", desc: "Editor de código esencial.", meta: ["IDE"], type: "FREE_DL", icon: "code" },
+                        { title: "Arduino IDE 2.0", desc: "Entorno oficial.", meta: ["Dev"], type: "FREE_DL", icon: "cpu" },
+                        { title: "Fusion 360", desc: "CAD/CAM Profesional.", meta: ["Diseño"], type: "AFFILIATE", icon: "box", link: "#" },
+                        { title: "PyCharm Pro", desc: "IDE Python avanzado.", meta: ["Python"], type: "AFFILIATE", icon: "terminal", link: "#" }
+                    ],
+                    inversiones: [
+                        { title: "Interactive Brokers", desc: "Acceso global profesional.", meta: ["Global"], type: "AFFILIATE", link: "#" },
+                        { title: "eToro", desc: "Social Trading para todos.", meta: ["Social"], type: "AFFILIATE", link: "#" },
+                        { title: "Binance", desc: "Líder en Criptomonedas.", meta: ["Crypto"], type: "AFFILIATE", link: "#" },
+                        { title: "TradingView", desc: "Análisis técnico superior.", meta: ["Herramienta"], type: "AFFILIATE", link: "#" }
+                    ]
                 }
+            },
 
-                html += `
-                    <div class="course-card bg-gray-900 rounded-xl p-6 shadow-xl border border-gray-700 hover:border-indigo-500 transition-colors">
-                        <div class="flex items-start justify-between">
-                            <h4 class="text-xl font-semibold text-white">${course.title}</h4>
-                            <span class="badge ${badgeClass} ml-4">${priceText}</span>
-                        </div>
-                        <p class="text-gray-400 mt-2">${course.description}</p>
+            // Inicialización
+            init() {
+                this.renderNav();
+                this.loadPage('inversiones'); // Página por defecto
+                lucide.createIcons();
+            },
+
+            // Renderizado de la Navegación (Optimizado)
+            renderNav() {
+                const navGrid = document.getElementById('nav-grid');
+                navGrid.innerHTML = this.data.categories.map(cat => `
+                    <button onclick="app.loadPage('${cat.id}')" 
+                            id="btn-${cat.id}"
+                            class="card-button bg-gray-800 p-4 rounded-xl border border-gray-700 text-center group focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                        <i data-lucide="${cat.icon}" class="w-8 h-8 mx-auto mb-2 text-indigo-400 group-hover:text-white transition-colors"></i>
+                        <span class="block font-bold text-white text-sm md:text-base">${cat.label}</span>
+                        <span class="text-xs text-gray-500 group-hover:text-gray-300 block mt-1">${cat.sub}</span>
+                    </button>
+                `).join('');
+            },
+
+            // Lógica Central de Renderizado de Páginas
+            loadPage(pageId) {
+                // 1. Actualizar estado visual de botones
+                document.querySelectorAll('.card-button').forEach(btn => {
+                    const isActive = btn.id === `btn-${pageId}`;
+                    btn.className = `card-button p-4 rounded-xl border text-center group transition-all ${
+                        isActive 
+                        ? 'bg-indigo-600 border-indigo-500 ring-2 ring-indigo-500/30' 
+                        : 'bg-gray-800 border-gray-700 hover:bg-gray-750'
+                    }`;
+                    // Cambiar color de icono
+                    const icon = btn.querySelector('i');
+                    if(icon) icon.className = `w-8 h-8 mx-auto mb-2 transition-colors ${isActive ? 'text-white' : 'text-indigo-400'}`;
+                });
+
+                // 2. Obtener datos y título
+                const items = this.data.content[pageId];
+                const categoryInfo = this.data.categories.find(c => c.id === pageId);
+
+                // 3. Generar HTML del contenido
+                const contentHTML = `
+                    <div class="p-6 md:p-8">
+                        <header class="mb-8 border-b border-gray-700 pb-4">
+                            <h2 class="text-2xl md:text-3xl font-bold text-white flex items-center">
+                                <i data-lucide="${categoryInfo.icon}" class="w-8 h-8 mr-3 text-indigo-500"></i>
+                                ${categoryInfo.label}
+                            </h2>
+                            <p class="text-gray-400 mt-2 text-sm md:text-base">Explora nuestra selección de recursos de ${categoryInfo.label.toLowerCase()}.</p>
+                        </header>
                         
-                        <div class="flex justify-between items-center text-sm text-gray-500 mt-4">
-                            <div class="flex items-center space-x-4">
-                                <span class="flex items-center text-gray-400"><i data-lucide="bar-chart-2" class="w-4 h-4 mr-1 text-indigo-400"></i> ${course.level}</span>
-                                <span class="flex items-center text-gray-400"><i data-lucide="clock" class="w-4 h-4 mr-1 text-indigo-400"></i> ${course.duration}</span>
-                            </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            ${items.map(item => this.createCardHTML(item)).join('')}
                         </div>
-
-                        <!-- Botón de acción -->
-                        <button class="mt-6 w-full py-2 px-4 rounded-lg text-white font-bold transition-colors ${buttonClass}" 
-                            onclick="${action}">
-                            ${buttonText}
-                        </button>
                     </div>
                 `;
-            });
 
-            html += `
-                    </div>
-                </div>
-            `;
-            contentArea.innerHTML = html;
-            lucide.createIcons(); // Vuelve a inicializar iconos para el nuevo contenido
-        };
-
-        // Función para renderizar la página de Diagramas de Electrónica
-        const renderDiagramasPage = () => {
-            let html = `
-                <div class="p-8">
-                    <h3 class="text-3xl font-bold text-indigo-400 mb-2 flex items-center">
-                        <i data-lucide="layout-grid" class="w-8 h-8 mr-3"></i> Diagramas de Electrónica
-                    </h3>
-                    <p class="text-lg text-gray-400 mb-8">
-                        Archivos listos para prototipado (esquemáticos, PCB y listas de materiales) para tus proyectos de electrónica. ¡Descarga gratis o apóyanos con una donación!
-                    </p>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            `;
-
-            diagramsData.forEach(diagram => {
-                let badgeClass = '';
-                let priceText = '';
-                let buttonText = '';
-                let buttonClass = 'bg-indigo-600 hover:bg-indigo-700';
-                let action = '';
-
-                // Definición de estilos y textos según el tipo de monetización
-                switch (diagram.priceType) {
-                    case 'FREE':
-                        badgeClass = 'bg-green-600 text-green-100';
-                        priceText = 'Descarga Gratuita';
-                        buttonText = 'Descargar Esquema';
-                        buttonClass = 'bg-green-600 hover:bg-green-700';
-                        action = `console.log('Simulación: Iniciando descarga del diagrama ${diagram.title}.')`;
-                        break;
-                    case 'DONATION':
-                        badgeClass = 'bg-indigo-600 text-indigo-100';
-                        priceText = 'Donación Voluntaria';
-                        buttonText = 'Descargar (¡Donar!)';
-                        buttonClass = 'bg-indigo-600 hover:bg-indigo-700';
-                        action = `showDonationModal('${diagram.title}')`; // Modificado para abrir el modal
-                        break;
-                }
-
-                html += `
-                    <div class="diagram-card bg-gray-900 rounded-xl p-6 shadow-xl border border-gray-700 hover:border-indigo-500 transition-colors">
-                        <div class="flex items-start justify-between">
-                            <h4 class="text-xl font-semibold text-white">${diagram.title}</h4>
-                            <span class="badge ${badgeClass} ml-4">${priceText}</span>
-                        </div>
-                        <p class="text-gray-400 mt-2 text-sm">${diagram.description}</p>
-                        
-                        <div class="flex justify-between items-center text-xs text-gray-500 mt-4">
-                            <span class="flex items-center text-gray-400">
-                                <i data-lucide="cpu" class="w-4 h-4 mr-1 text-indigo-400"></i> Dificultad: ${diagram.difficulty}
-                            </span>
-                            <span class="flex items-center text-gray-400">
-                                <i data-lucide="file-text" class="w-4 h-4 mr-1 text-indigo-400"></i> Formatos: ${diagram.fileType}
-                            </span>
-                        </div>
-
-                        <!-- Botón de acción -->
-                        <button class="mt-6 w-full py-2 px-4 rounded-lg text-white font-bold transition-colors ${buttonClass}" 
-                            onclick="${action}">
-                            ${buttonText}
-                        </button>
-                    </div>
-                `;
-            });
-
-            html += `
-                    </div>
-                </div>
-            `;
-            contentArea.innerHTML = html;
-            lucide.createIcons();
-        };
-
-        // Función para renderizar la página de Modelos de Robots
-        const renderRobotsPage = () => {
-            let html = `
-                <div class="p-8">
-                    <h3 class="text-3xl font-bold text-indigo-400 mb-2 flex items-center">
-                        <i data-lucide="bot" class="w-8 h-8 mr-3"></i> Modelos de Robots y Proyectos
-                    </h3>
-                    <p class="text-lg text-gray-400 mb-8">
-                        Instrucciones paso a paso, código fuente y planos para la construcción de brazos robóticos y sistemas modulares con microcontroladores populares.
-                    </p>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            `;
-
-            robotsData.forEach(robot => {
-                let badgeClass = '';
-                let priceText = '';
-                let buttonText = '';
-                let buttonClass = 'bg-indigo-600 hover:bg-indigo-700';
-                let action = '';
-
-                // Definición de estilos y textos según el tipo de monetización
-                switch (robot.priceType) {
-                    case 'FREE':
-                        badgeClass = 'bg-green-600 text-green-100';
-                        priceText = 'Gratuito (Instrucciones Completas)';
-                        buttonText = 'Ver Proyecto';
-                        buttonClass = 'bg-green-600 hover:bg-green-700';
-                        action = `console.log('Simulación: Navegando al proyecto ${robot.title}.')`;
-                        break;
-                    case 'PREMIUM':
-                        badgeClass = 'bg-yellow-600 text-yellow-100';
-                        priceText = `Premium - Planos Detallados`;
-                        buttonText = 'Comprar Acceso';
-                        buttonClass = 'bg-yellow-600 hover:bg-yellow-700';
-                        action = `console.log('Simulación: Iniciando pago para ${robot.title}.')`;
-                        break;
-                    case 'DONATION':
-                        badgeClass = 'bg-indigo-600 text-indigo-100';
-                        priceText = 'Donación Voluntaria';
-                        buttonText = 'Descargar (¡Apoyar!)';
-                        buttonClass = 'bg-indigo-600 hover:bg-indigo-700';
-                        action = `showDonationModal('${robot.title}')`; // Modificado para abrir el modal
-                        break;
-                }
-
-                html += `
-                    <div class="robot-card bg-gray-900 rounded-xl p-6 shadow-xl border border-gray-700 hover:border-indigo-500 transition-colors">
-                        <div class="flex items-start justify-between">
-                            <h4 class="text-xl font-semibold text-white">${robot.title}</h4>
-                            <span class="badge ${badgeClass} ml-4">${priceText}</span>
-                        </div>
-                        <p class="text-gray-400 mt-2 text-sm">${robot.description}</p>
-                        
-                        <div class="mt-4 space-y-2 text-sm text-gray-400">
-                            <p class="flex items-center"><i data-lucide="chip" class="w-4 h-4 mr-2 text-indigo-400"></i> <strong>Plataforma:</strong> ${robot.platform}</p>
-                            <p class="flex items-center"><i data-lucide="boxes" class="w-4 h-4 mr-2 text-indigo-400"></i> <strong>Componentes Clave:</strong> ${robot.components}</p>
-                        </div>
-
-                        <!-- Botón de acción -->
-                        <button class="mt-6 w-full py-2 px-4 rounded-lg text-white font-bold transition-colors ${buttonClass}" 
-                            onclick="${action}">
-                            ${buttonText}
-                        </button>
-                    </div>
-                `;
-            });
-
-            html += `
-                    </div>
-                </div>
-            `;
-            contentArea.innerHTML = html;
-            lucide.createIcons();
-        };
-
-        // Función para renderizar la página de Libros (Afiliados)
-        const renderLibrosPage = () => {
-            let html = `
-                <div class="p-8">
-                    <h3 class="text-3xl font-bold text-indigo-400 mb-2 flex items-center">
-                        <i data-lucide="book-open" class="w-8 h-8 mr-3"></i> Biblioteca DOTEC: Lecturas Esenciales
-                    </h3>
-                    <p class="text-lg text-gray-400 mb-8">
-                        Hemos seleccionado los mejores libros sobre robótica y microcontroladores. Al utilizar el enlace para tu compra, recibimos una pequeña comisión sin costo extra para ti. ¡Gracias por apoyar DOTEC!
-                    </p>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            `;
-
-            booksData.forEach(book => {
-                // Generar un color de fondo para la etiqueta de tema
-                const topicColor = book.topic.includes('ROS') ? 'bg-purple-600' : 
-                                 book.topic.includes('Avanzada') ? 'bg-red-600' : 
-                                 book.topic.includes('Introductoria') ? 'bg-indigo-600' : 
-                                 'bg-blue-600';
-
-                html += `
-                    <div class="book-card bg-gray-900 rounded-xl p-6 shadow-xl border border-gray-700 hover:border-green-500 transition-colors">
-                        <div class="flex items-start justify-between">
-                            <h4 class="text-xl font-semibold text-white">${book.title}</h4>
-                            <span class="badge ${topicColor} text-white ml-4">${book.topic}</span>
-                        </div>
-                        <p class="text-gray-400 mt-2 text-sm">Por: <strong>${book.author}</strong></p>
-                        
-                        <p class="mt-4 text-sm text-gray-400">
-                           Un recurso fundamental para entender ${book.topic.toLowerCase()}.
-                        </p>
-
-                        <!-- Botón de acción con enlace de afiliado simulado -->
-                        <a href="${book.affiliateLink}" target="_blank" 
-                            class="mt-6 w-full py-2 px-4 rounded-lg text-white font-bold transition-colors flex items-center justify-center bg-green-600 hover:bg-green-700">
-                            <i data-lucide="external-link" class="w-5 h-5 mr-2"></i> 
-                            Comprar en Plataforma Afiliada
-                        </a>
-                    </div>
-                `;
-            });
-
-            html += `
-                    </div>
-                </div>
-            `;
-            contentArea.innerHTML = html;
-            lucide.createIcons();
-        };
-
-        // Función para renderizar la página de Software y Herramientas
-        const renderSoftwarePage = () => {
-            let html = `
-                <div class="p-8">
-                    <h3 class="text-3xl font-bold text-indigo-400 mb-2 flex items-center">
-                        <i data-lucide="wrench" class="w-8 h-8 mr-3"></i> Software y Herramientas Esenciales
-                    </h3>
-                    <p class="text-lg text-gray-400 mb-8">
-                        Los mejores programas y entornos de desarrollo para tus proyectos de código, electrónica y diseño 3D. ¡Utiliza los enlaces para descargar o apoyar DOTEC!
-                    </p>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            `;
-
-            softwareData.forEach(software => {
-                let badgeClass = '';
-                let buttonText = '';
-                let buttonClass = '';
-                let buttonIcon = '';
-                let action = '';
-
-                // Definición de estilos y textos según la licencia/monetización
-                switch (software.license) {
-                    case 'Gratuito':
-                        badgeClass = 'bg-green-600 text-green-100';
-                        buttonText = 'Descarga Gratuita';
-                        buttonClass = 'bg-green-600 hover:bg-green-700';
-                        buttonIcon = 'download';
-                        action = `console.log('Simulación: Descargando ${software.title}.')`;
-                        break;
-                    case 'Donación/Pago':
-                        badgeClass = 'bg-indigo-600 text-indigo-100';
-                        buttonText = 'Ir a la Plataforma (Donación)';
-                        buttonClass = 'bg-indigo-600 hover:bg-indigo-700';
-                        buttonIcon = 'external-link';
-                        action = `showDonationModal('${software.title}')`; // Modificado para abrir el modal
-                        break;
-                    case 'Afiliado/Pago':
-                        badgeClass = 'bg-yellow-600 text-yellow-900';
-                        buttonText = 'Ver Licencia/Compra';
-                        buttonClass = 'bg-yellow-600 hover:bg-yellow-700 text-gray-900';
-                        buttonIcon = 'credit-card';
-                        action = `console.log('Simulación: Redireccionando al enlace de afiliado de ${software.title}.')`;
-                        break;
-                }
-
-                html += `
-                    <div class="software-card bg-gray-900 rounded-xl p-6 shadow-xl border border-gray-700 hover:border-indigo-500 transition-colors">
-                        <div class="flex items-start justify-between">
-                            <h4 class="text-xl font-semibold text-white">${software.title}</h4>
-                            <span class="badge ${badgeClass} ml-4">${software.license}</span>
-                        </div>
-                        <p class="text-gray-400 mt-2 text-sm">${software.description}</p>
-                        
-                        <div class="mt-4 space-y-2 text-sm text-gray-400">
-                            <p class="flex items-center"><i data-lucide="${software.icon}" class="w-4 h-4 mr-2 text-indigo-400"></i> <strong>Categoría:</strong> ${software.category}</p>
-                        </div>
-
-                        <!-- Botón de acción -->
-                        <button class="mt-6 w-full py-2 px-4 rounded-lg font-bold transition-colors flex items-center justify-center ${buttonClass}" 
-                            onclick="${action}">
-                            <i data-lucide="${buttonIcon}" class="w-5 h-5 mr-2"></i> 
-                            ${buttonText}
-                        </button>
-                    </div>
-                `;
-            });
-
-            html += `
-                    </div>
-                </div>
-            `;
-            contentArea.innerHTML = html;
-            lucide.createIcons();
-        };
-
-        // Función para renderizar la página de Inversiones (NUEVA FUNCIÓN)
-        const renderInvestmentsPage = () => {
-            let html = `
-                <div class="p-8">
-                    <h3 class="text-3xl font-bold text-indigo-400 mb-2 flex items-center">
-                        <i data-lucide="trending-up" class="w-8 h-8 mr-3"></i> Brokers y Plataformas de Trading
-                    </h3>
-                    <p class="text-lg text-gray-400 mb-8">
-                        Hemos seleccionado plataformas de inversión de alta confianza. Al registrarte con nuestros enlaces, puedes recibir beneficios y a la vez apoyas el crecimiento de DOTEC.
-                    </p>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            `;
-
-            investmentData.forEach(broker => {
-                // Generar un color de fondo para la etiqueta de tema
-                const typeColor = broker.category.includes('Globales') ? 'bg-teal-600' : 
-                                 broker.category.includes('Europeos') ? 'bg-blue-600' : 
-                                 broker.category.includes('Análisis') ? 'bg-orange-600' : 
-                                 broker.category.includes('Criptomonedas') ? 'bg-yellow-600' : 
-                                 'bg-indigo-600';
-
-                html += `
-                    <div class="broker-card bg-gray-900 rounded-xl p-6 shadow-xl border border-gray-700 hover:border-teal-500 transition-colors">
-                        <div class="flex items-start justify-between">
-                            <h4 class="text-xl font-semibold text-white">${broker.title}</h4>
-                            <span class="badge ${typeColor} text-white ml-4">${broker.category}</span>
-                        </div>
-                        <p class="text-gray-400 mt-2 text-sm">${broker.description}</p>
-                        
-                        <div class="mt-4 space-y-2 text-sm text-gray-400">
-                            <p class="flex items-center"><i data-lucide="shield-check" class="w-4 h-4 mr-2 text-indigo-400"></i> <strong>Regulación:</strong> Alta Reputación</p>
-                        </div>
-
-                        <!-- Botón de acción con enlace de afiliado simulado -->
-                        <a href="${broker.link}" target="_blank" 
-                            class="mt-6 w-full py-2 px-4 rounded-lg text-white font-bold transition-colors flex items-center justify-center bg-teal-600 hover:bg-teal-700">
-                            <i data-lucide="external-link" class="w-5 h-5 mr-2"></i> 
-                            Abrir Cuenta (Afiliado)
-                        </a>
-                    </div>
-                `;
-            });
-
-            html += `
-                    </div>
-                </div>
-            `;
-            contentArea.innerHTML = html;
-            lucide.createIcons();
-        };
-
-
-        // Función para renderizar contenido estático de otras páginas
-        const renderStaticPage = (title, icon, content) => {
-            contentArea.innerHTML = `
-                <div class="p-8 text-center">
-                    <i data-lucide="${icon}" class="w-12 h-12 mx-auto mb-4 text-indigo-400"></i>
-                    <h3 class="text-2xl font-bold text-gray-300">${title}</h3>
-                    <p class="mt-4 text-lg text-gray-400 max-w-xl mx-auto">${content}</p>
-                    <p class="mt-8 text-sm text-gray-500">
-                        (Esta es una página de marcador de posición. En los siguientes pasos, podemos desarrollar el contenido interactivo aquí.)
-                    </p>
-                </div>
-            `;
-            lucide.createIcons();
-        };
-
-        // Función principal de carga de contenido
-        const loadContent = (pageName) => {
-            switch(pageName) {
-                case 'cursos':
-                    renderCursosPage();
-                    break;
-                case 'diagramas':
-                    renderDiagramasPage();
-                    break;
-                case 'robots':
-                    renderRobotsPage();
-                    break; 
-                case 'libros':
-                    renderLibrosPage();
-                    break; 
-                case 'software':
-                    renderSoftwarePage(); 
-                    break;
-                case 'inversiones': // NUEVO CASO
-                    renderInvestmentsPage(); 
-                    break;
-                default:
-                    // Dejamos Inversiones como el predeterminado
-                    renderInvestmentsPage(); 
-            }
-        };
-
-        // ------------------------------------------
-        // LÓGICA DE NAVEGACIÓN Y MANEJO DE EVENTOS
-        // ------------------------------------------
-
-        const activateButton = (button) => {
-            // Remueve el estilo activo de todos los botones
-            document.querySelectorAll('.card-button').forEach(btn => {
-                // Quitar clases de activo
-                btn.classList.remove('ring-4', 'ring-indigo-500/50', 'bg-indigo-600');
-                btn.classList.add('bg-gray-800');
+                document.getElementById('content-area').innerHTML = contentHTML;
+                lucide.createIcons();
                 
-                // Icono y Texto
-                btn.querySelector('i').classList.remove('text-white');
-                btn.querySelector('i').classList.add('text-indigo-400');
-                btn.querySelector('p').classList.remove('text-indigo-200');
-                btn.querySelector('p').classList.add('text-gray-400');
-            });
+                // Scroll suave al contenido en móviles
+                if(window.innerWidth < 768) {
+                    document.getElementById('content-area').scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            },
 
-            // Agrega el estilo activo al botón clickeado
-            button.classList.add('ring-4', 'ring-indigo-500/50', 'bg-indigo-600');
-            button.classList.remove('bg-gray-800');
+            // Generador de Tarjetas Genérico (DRY)
+            createCardHTML(item) {
+                // Configuración según tipo de monetización
+                const config = {
+                    FREE: { color: 'green', badge: 'Gratis', btn: 'Acceder', action: 'alert("Abriendo recurso gratuito...")' },
+                    FREE_DL: { color: 'green', badge: 'Gratis', btn: 'Descargar', icon: 'download', action: 'alert("Iniciando descarga...")' },
+                    PREMIUM: { color: 'yellow', badge: 'Premium', btn: 'Comprar', icon: 'star', action: 'alert("Ir a pasarela de pago")' },
+                    DONATION: { color: 'indigo', badge: 'Donación', btn: 'Descargar (Apoyar)', icon: 'heart', action: `app.openModal('${item.title}')` },
+                    AFFILIATE: { color: 'teal', badge: 'Recomendado', btn: 'Ver Oferta', icon: 'external-link', action: `window.open('${item.link || '#'}', '_blank')` }
+                }[item.type] || { color: 'gray', badge: 'Info', btn: 'Ver', action: '' };
+
+                // Colores de Tailwind dinámicos
+                const colors = {
+                    green: 'bg-green-500/10 text-green-400 border-green-500/20',
+                    yellow: 'bg-yellow-500/10 text-yellow-400 border-yellow-500/20',
+                    indigo: 'bg-indigo-500/10 text-indigo-400 border-indigo-500/20',
+                    teal: 'bg-teal-500/10 text-teal-400 border-teal-500/20',
+                    gray: 'bg-gray-700 text-gray-300 border-gray-600'
+                };
+                
+                const btnColors = {
+                    green: 'bg-green-600 hover:bg-green-500',
+                    yellow: 'bg-yellow-600 hover:bg-yellow-500 text-black',
+                    indigo: 'bg-indigo-600 hover:bg-indigo-500',
+                    teal: 'bg-teal-600 hover:bg-teal-500',
+                }[config.color] || 'bg-gray-600';
+
+                return `
+                    <article class="bg-gray-800 rounded-xl p-5 border border-gray-700 hover:border-${config.color}-500 transition-all hover:shadow-lg flex flex-col h-full">
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="font-bold text-white text-lg leading-tight">${item.title}</h3>
+                            <span class="badge ${colors[config.color]} ml-2 shrink-0">${config.badge}</span>
+                        </div>
+                        
+                        <p class="text-gray-400 text-sm mb-4 flex-grow">${item.desc}</p>
+                        
+                        <div class="flex flex-wrap gap-2 mb-5">
+                            ${item.meta.map(m => `<span class="text-xs font-mono bg-gray-900 text-gray-500 px-2 py-1 rounded border border-gray-700">${m}</span>`).join('')}
+                        </div>
+
+                        <button onclick="${config.action}" class="w-full py-2.5 rounded-lg font-semibold text-sm transition-colors flex items-center justify-center ${btnColors} ${config.color === 'yellow' ? 'text-gray-900' : 'text-white'}">
+                            <i data-lucide="${config.icon || 'arrow-right'}" class="w-4 h-4 mr-2"></i> ${config.btn}
+                        </button>
+                    </article>
+                `;
+            },
+
+            // Funciones del Modal
+            openModal(title) {
+                this.currentResource = title;
+                const modal = document.getElementById('donation-modal');
+                const feedback = document.getElementById('donation-feedback');
+                document.getElementById('donation-input').value = '';
+                feedback.classList.add('hidden');
+                modal.classList.add('active');
+            },
             
-            // Icono y Texto
-            button.querySelector('i').classList.add('text-white');
-            button.querySelector('i').classList.remove('text-indigo-400');
-            button.querySelector('p').classList.add('text-indigo-200');
-            button.querySelector('p').classList.remove('text-gray-400');
+            closeModal() {
+                document.getElementById('donation-modal').classList.remove('active');
+            },
+
+            setDonation(amount) {
+                document.getElementById('donation-input').value = amount;
+            },
+
+            processPayment(method) {
+                const amount = document.getElementById('donation-input').value;
+                const feedback = document.getElementById('donation-feedback');
+                
+                if(!amount || amount <= 0) {
+                    feedback.textContent = "Por favor ingresa un monto válido.";
+                    feedback.className = "mt-4 text-center text-xs font-bold text-red-400 block";
+                    return;
+                }
+
+                feedback.innerHTML = `<span class="flex items-center justify-center"><i data-lucide="loader-2" class="animate-spin mr-2 w-4 h-4"></i> Procesando $${amount} vía ${method}...</span>`;
+                feedback.className = "mt-4 text-center text-xs font-bold text-indigo-300 block";
+
+                setTimeout(() => {
+                    feedback.textContent = "¡Pago Exitoso! Redirigiendo a tu descarga...";
+                    feedback.className = "mt-4 text-center text-xs font-bold text-green-400 block";
+                    setTimeout(() => {
+                        alert(`Descarga iniciada para: ${this.currentResource}`);
+                        this.closeModal();
+                    }, 1500);
+                }, 2000);
+            }
         };
 
-        document.addEventListener('DOMContentLoaded', () => {
-            const resourceGrid = document.getElementById('resource-grid');
-            
-            // Manejador de clics en el grid
-            resourceGrid.addEventListener('click', (event) => {
-                const button = event.target.closest('.card-button');
-                
-                if (button) {
-                    const pageName = button.getAttribute('data-page');
-                    
-                    activateButton(button);
-
-                    // Carga el contenido de la página seleccionada
-                    loadContent(pageName);
-                }
-            });
-            
-            // Carga la página de Inversiones por defecto al iniciar
-            loadContent('inversiones');
-
-            // Asegura que el botón de Inversiones esté activo al inicio
-            const investmentsButton = document.querySelector('[data-page="inversiones"]');
-            if (investmentsButton) {
-                activateButton(investmentsButton);
-            }
+        // Arrancar aplicación cuando el DOM esté listo
+        document.addEventListener('DOMContentLoaded', () => app.init());
+        
+        // Cerrar modal con tecla Escape
+        document.addEventListener('keydown', (e) => {
+            if(e.key === 'Escape') app.closeModal();
         });
     </script>
 </body>

@@ -6,58 +6,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- SEO & Metadatos (Vital para Google y Redes Sociales) -->
+    <!-- SEO & Metadatos -->
     <title>DOTEC | Recursos de Robótica, Electrónica y Programación</title>
     <meta name="description" content="Plataforma líder en recursos tecnológicos: cursos de programación, diagramas electrónicos, planos de robots, libros y herramientas de trading. Descargas gratuitas y premium.">
     <meta name="keywords" content="robotica, arduino, esp32, cursos programación, diagramas electronicos, trading brokers, libros ingenieria">
     <meta name="author" content="DOTEC">
     
-    <!-- Open Graph / Facebook / WhatsApp -->
+    <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://dotec.online/">
     <meta property="og:title" content="DOTEC | Desarrollo con Orientación Tecnológica">
     <meta property="og:description" content="Recursos gratuitos y premium para makers y desarrolladores. Cursos, planos y más.">
-    <!-- Imagen genérica para compartir (puedes cambiarla luego por tu logo real alojado) -->
     <meta property="og:image" content="https://ui-avatars.com/api/?name=DOTEC&background=4f46e5&color=fff&size=512">
 
-    <!-- Preconexión a CDNs para carga rápida -->
+    <!-- Preconexión -->
     <link rel="preconnect" href="https://cdn.tailwindcss.com">
     <link rel="preconnect" href="https://unpkg.com">
 
-    <!-- Carga de Tailwind CSS -->
+    <!-- Tailwind & Lucide -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Carga de Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
 
     <style>
-        /* Optimización de Renderizado */
         body { font-family: 'Inter', system-ui, -apple-system, sans-serif; }
-        
-        /* Estilos de Utilidad */
         .card-button { transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); }
         .card-button:hover { transform: translateY(-4px); box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.4); }
         .card-button:active { transform: translateY(0); }
-        
         .badge { padding: 4px 10px; border-radius: 9999px; font-size: 0.70rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; }
         
-        /* Modal Optimizado */
+        /* Modales */
         .modal { transition: opacity 0.2s ease-in-out, visibility 0.2s; opacity: 0; visibility: hidden; }
         .modal.active { opacity: 1; visibility: visible; }
         
-        /* Ad Units (Espacios para publicidad) */
-        .ad-unit { background-color: rgba(55, 65, 81, 0.5); border: 1px dashed #6366f1; color: #9ca3af; display: flex; align-items: center; justify-content: center; flex-direction: column; border-radius: 0.75rem; transition: background-color 0.3s; }
-        .ad-unit:hover { background-color: rgba(55, 65, 81, 0.8); }
+        /* Banner de Cookies */
+        .cookie-banner { transform: translateY(100%); transition: transform 0.5s ease-out; }
+        .cookie-banner.show { transform: translateY(0); }
     </style>
 </head>
 <body class="bg-gray-950 text-gray-100 antialiased min-h-screen flex flex-col">
 
-    <!-- HEADER SEMÁNTICO -->
+    <!-- HEADER -->
     <header class="bg-gray-900 border-b border-gray-800 sticky top-0 z-40 backdrop-blur-md bg-opacity-90">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
             <div class="flex items-center justify-center md:justify-start space-x-4">
-                <!-- Logo Optimizado (SVG Inline para carga instantánea) -->
-                <svg class="w-10 h-10 text-indigo-500 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="currentColor" aria-label="Logo DOTEC">
+                <svg class="w-10 h-10 text-indigo-500 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="currentColor">
                     <rect x="0" y="0" width="25" height="100" rx="4" />
                     <rect x="25" y="0" width="50" height="25" rx="4" />
                     <rect x="25" y="75" width="50" height="25" rx="4" />
@@ -74,18 +66,15 @@
     <!-- MAIN CONTENT -->
     <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12 w-full">
         
-        <!-- NAVEGACIÓN PRINCIPAL (GRID) -->
-        <nav aria-label="Categorías de recursos" class="mb-12">
-            <h2 class="sr-only">Categorías</h2>
-            <!-- Grid responsivo de 6 columnas -->
+        <!-- NAVEGACIÓN -->
+        <nav aria-label="Categorías" class="mb-10">
             <div id="nav-grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-6">
-                <!-- Los botones se generarán dinámicamente -->
+                <!-- Generado por JS -->
             </div>
         </nav>
 
-        <!-- ESPACIO PUBLICITARIO SUPERIOR -->
-        <aside class="w-full flex justify-center mb-8" aria-label="Publicidad Superior">
-            <!-- superior -->
+        <!-- PUBLICIDAD SUPERIOR -->
+        <aside class="w-full flex justify-center mb-8 min-h-[90px]" aria-label="Publicidad Superior">
             <ins class="adsbygoogle"
                  style="display:inline-block;width:728px;height:90px"
                  data-ad-client="ca-pub-2787460707329873"
@@ -95,9 +84,25 @@
             </script>
         </aside>
 
-        <!-- ÁREA DE CONTENIDO DINÁMICO -->
+        <!-- BARRA DE BÚSQUEDA Y FILTROS -->
+        <div class="flex flex-col md:flex-row justify-between items-center mb-6 gap-4">
+            <h2 id="section-title" class="text-2xl font-bold text-white flex items-center">
+                <!-- Título dinámico -->
+            </h2>
+            <div class="relative w-full md:w-64">
+                <input type="text" 
+                       id="search-input" 
+                       placeholder="Buscar recurso..." 
+                       onkeyup="app.filterResources()"
+                       class="w-full bg-gray-900 border border-gray-700 text-gray-300 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block pl-10 p-2.5">
+                <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                    <i data-lucide="search" class="w-4 h-4 text-gray-500"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- CONTENIDO DINÁMICO -->
         <section id="content-area" class="bg-gray-900/50 rounded-2xl border border-gray-800 min-h-[400px]">
-            <!-- El contenido se inyecta aquí -->
             <div class="flex items-center justify-center h-full p-12 text-gray-500">
                 <div class="text-center">
                     <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-500 mx-auto mb-4"></div>
@@ -106,8 +111,8 @@
             </div>
         </section>
 
-        <!-- ESPACIO PUBLICITARIO INFERIOR -->
-        <aside class="w-full mt-8" aria-label="Publicidad Inferior">
+        <!-- PUBLICIDAD INFERIOR -->
+        <aside class="w-full mt-8 min-h-[100px]" aria-label="Publicidad Inferior">
             <ins class="adsbygoogle"
                  style="display:block"
                  data-ad-format="autorelaxed"
@@ -124,76 +129,79 @@
     <footer class="bg-gray-900 border-t border-gray-800 py-8 mt-auto">
         <div class="max-w-7xl mx-auto px-4 text-center text-gray-500 text-sm">
             <p>&copy; 2025 DOTEC. Todos los derechos reservados.</p>
-            <div class="mt-2 space-x-4">
-                <a href="#" class="hover:text-indigo-400 transition-colors">Términos</a>
-                <a href="#" class="hover:text-indigo-400 transition-colors">Privacidad</a>
-                <a href="#" class="hover:text-indigo-400 transition-colors">Contacto</a>
+            <div class="mt-4 flex justify-center space-x-6">
+                <button onclick="app.openLegal('terms')" class="hover:text-indigo-400 transition-colors">Términos y Condiciones</button>
+                <button onclick="app.openLegal('privacy')" class="hover:text-indigo-400 transition-colors">Política de Privacidad</button>
+                <a href="mailto:contacto@dotec.online" class="hover:text-indigo-400 transition-colors">Contacto</a>
             </div>
         </div>
     </footer>
 
-    <!-- MODAL DE DONACIONES (Optimizado) -->
+    <!-- MODAL DE DONACIONES -->
     <div id="donation-modal" class="modal fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm" role="dialog" aria-modal="true">
         <div class="bg-gray-800 rounded-2xl shadow-2xl w-full max-w-md p-6 border border-gray-700 relative overflow-hidden">
-            <!-- Decoración de fondo -->
             <div class="absolute top-0 right-0 -mt-4 -mr-4 w-24 h-24 bg-indigo-500/20 rounded-full blur-2xl"></div>
-
             <div class="flex justify-between items-start mb-6 relative z-10">
                 <h3 class="text-xl font-bold text-white flex items-center">
                     <i data-lucide="heart" class="w-5 h-5 mr-2 text-pink-500 fill-current"></i> Apoya a DOTEC
                 </h3>
-                <button onclick="app.closeModal()" class="text-gray-400 hover:text-white p-1 rounded-full hover:bg-gray-700 transition-colors">
+                <button onclick="app.closeModal('donation-modal')" class="text-gray-400 hover:text-white p-1 rounded-full hover:bg-gray-700 transition-colors">
                     <i data-lucide="x" class="w-5 h-5"></i>
                 </button>
             </div>
-
-            <p class="text-gray-300 text-sm mb-6 leading-relaxed">
-                Tu aporte mantiene los servidores activos y nos permite crear nuevos modelos robóticos gratuitos.
-            </p>
-
-            <div class="grid grid-cols-3 gap-3 mb-4">
-                <button onclick="app.setDonation(5)" class="bg-gray-700 hover:bg-indigo-600 hover:text-white text-indigo-300 py-2 rounded-lg font-bold border border-gray-600 transition-all">$5</button>
-                <button onclick="app.setDonation(10)" class="bg-gray-700 hover:bg-indigo-600 hover:text-white text-indigo-300 py-2 rounded-lg font-bold border border-gray-600 transition-all">$10</button>
-                <button onclick="app.setDonation(25)" class="bg-gray-700 hover:bg-indigo-600 hover:text-white text-indigo-300 py-2 rounded-lg font-bold border border-gray-600 transition-all">$25</button>
-            </div>
-
-            <div class="relative mb-6">
-                <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">$</span>
-                <input id="donation-input" type="number" placeholder="Otro monto" class="w-full bg-gray-900 pl-8 pr-4 py-3 rounded-lg border border-gray-600 text-white focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition-all"/>
-            </div>
-
-            <div class="space-y-3">
-                <!-- Botón Mercado Pago -->
-                <button onclick="app.processPayment('MercadoPago')" class="w-full py-3 rounded-lg text-white font-semibold bg-[#009ee3] hover:bg-[#008ad0] shadow-lg shadow-blue-400/30 transition-all flex items-center justify-center">
-                    <i data-lucide="smartphone" class="w-4 h-4 mr-2"></i> Mercado Pago
-                </button>
-                <!-- Botón PayPal -->
-                <button onclick="app.processPayment('PayPal')" class="w-full py-3 rounded-lg text-white font-semibold bg-[#003087] hover:bg-[#00256b] transition-colors flex items-center justify-center">
-                    <i data-lucide="wallet" class="w-4 h-4 mr-2"></i> PayPal
-                </button>
-            </div>
+            <p class="text-gray-300 text-sm mb-6 leading-relaxed">Tu aporte mantiene los servidores activos y nos permite crear nuevos modelos robóticos gratuitos.</p>
             
+            <!-- Botones de Donación -->
+            <div class="space-y-3">
+                <button onclick="app.processPayment('MercadoPago')" class="w-full py-3 rounded-lg text-white font-semibold bg-[#009ee3] hover:bg-[#008ad0] shadow-lg shadow-blue-400/30 transition-all flex items-center justify-center">
+                    <i data-lucide="smartphone" class="w-4 h-4 mr-2"></i> Donar con Mercado Pago
+                </button>
+                <button onclick="app.processPayment('PayPal')" class="w-full py-3 rounded-lg text-white font-semibold bg-[#003087] hover:bg-[#00256b] transition-colors flex items-center justify-center">
+                    <i data-lucide="wallet" class="w-4 h-4 mr-2"></i> Donar con PayPal
+                </button>
+            </div>
             <div id="donation-feedback" class="mt-4 text-center text-xs font-medium hidden"></div>
         </div>
     </div>
 
-    <!-- LÓGICA DE LA APLICACIÓN (JAVASCRIPT) -->
+    <!-- MODAL LEGAL (GENÉRICO) -->
+    <div id="legal-modal" class="modal fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm" role="dialog">
+        <div class="bg-gray-800 rounded-2xl shadow-2xl w-full max-w-2xl p-8 border border-gray-700 relative max-h-[80vh] overflow-y-auto">
+            <div class="flex justify-between items-start mb-4">
+                <h3 id="legal-title" class="text-2xl font-bold text-white"></h3>
+                <button onclick="app.closeModal('legal-modal')" class="text-gray-400 hover:text-white"><i data-lucide="x" class="w-6 h-6"></i></button>
+            </div>
+            <div id="legal-content" class="text-gray-300 text-sm space-y-4 leading-relaxed"></div>
+        </div>
+    </div>
+
+    <!-- BANNER DE COOKIES -->
+    <div id="cookie-banner" class="cookie-banner fixed bottom-0 left-0 right-0 bg-gray-900 border-t border-indigo-500 p-4 z-50 shadow-[0_-4px_20px_rgba(0,0,0,0.5)]">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p class="text-gray-300 text-sm text-center sm:text-left">
+                Usamos cookies para mejorar tu experiencia y mostrar publicidad relevante. Al continuar navegando, aceptas nuestra política de privacidad.
+            </p>
+            <div class="flex space-x-3">
+                <button onclick="app.acceptCookies()" class="bg-indigo-600 hover:bg-indigo-500 text-white px-6 py-2 rounded-lg text-sm font-bold transition-colors">
+                    Aceptar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- APP LOGIC -->
     <script>
-        // Objeto principal de la aplicación para evitar desorden
         const app = {
             currentResource: '',
-
-            // CONFIGURACIÓN DE CUENTAS DE PAGO (¡IMPORTANTE: EDITA ESTO!)
-            // Reemplaza los valores con tus propios enlaces o usuarios reales.
+            currentCategory: 'inversiones',
+            
+            // CONFIGURACIÓN DE PAGOS
             paymentConfig: {
-                // Tu usuario de PayPal.Me (Ej: si tu link es paypal.me/juandotec, pon 'juandotec')
                 paypalMeUser: 'DotecRivera', 
-                
-                // Tu enlace de Mercado Pago (Link de pago genérico o perfil)
                 mercadoPagoLink: 'https://link.mercadopago.com.uy/dotecservicios'
             },
             
-            // BASE DE DATOS UNIFICADA
+            // DATOS
             data: {
                 categories: [
                     { id: 'inversiones', label: 'Inversiones', icon: 'trending-up', sub: 'Brokers & Trading', color: 'indigo' },
@@ -206,8 +214,7 @@
                 content: {
                     cursos: [
                         { title: "JS Moderno (ES6+)", desc: "Fundamentos de JavaScript, promesas y async.", meta: ["Básico", "8h"], type: "FREE" },
-                        // NOTA: Para productos PREMIUM, asegúrate de poner tu link de pago real en 'link'
-                        { title: "Full-Stack Node/Mongo", desc: "Backend y Frontend robusto.", meta: ["Avanzado", "20h"], type: "PREMIUM", price: "$49.99", link: "https://link.mercadopago.com/TU_LINK_CURSO_FULLSTACK" },
+                        { title: "Full-Stack Node/Mongo", desc: "Backend y Frontend robusto.", meta: ["Avanzado", "20h"], type: "PREMIUM", link: "https://link.mercadopago.com/TU_LINK_CURSO_FULLSTACK" },
                         { title: "Modelado 3D Blender", desc: "Diseña modelos para imprimir.", meta: ["Intermedio", "12h"], type: "DONATION" },
                         { title: "Arduino Básico", desc: "IoT y robótica inicial.", meta: ["Básico", "6h"], type: "FREE" }
                     ],
@@ -224,7 +231,6 @@
                         { title: "Clasificador Color", desc: "5GDL con sensor TCS3200.", meta: ["Mega", "Alto Torque"], type: "PREMIUM", link: "#" }
                     ],
                     libros: [
-                        // Recuerda poner tus enlaces de afiliado de Amazon aquí
                         { title: "Intro a la Robótica", desc: "John J. Craig. La biblia de la mecánica.", meta: ["Teoría"], type: "AFFILIATE", link: "#" },
                         { title: "ROS 2 in 5 Days", desc: "Lentin Joseph. Guía práctica rápida.", meta: ["ROS 2"], type: "AFFILIATE", link: "#" },
                         { title: "Arduino Básico", desc: "Oscar D.P. Proyectos iniciales.", meta: ["Arduino"], type: "AFFILIATE", link: "#" },
@@ -237,28 +243,26 @@
                         { title: "PyCharm Pro", desc: "IDE Python avanzado.", meta: ["Python"], type: "AFFILIATE", icon: "terminal", link: "#" }
                     ],
                     inversiones: [
-                        // Pon tus enlaces de referido de brokers aquí
-                        { title: "Interactive Brokers", desc: "Acceso global profesional.", meta: ["Global"], type: "AFFILIATE", link: "#" },
-                        { title: "eToro", desc: "Social Trading para todos.", meta: ["Social"], type: "AFFILIATE", link: "#" },
-                        { title: "Binance", desc: "Líder en Criptomonedas.", meta: ["Crypto"], type: "AFFILIATE", link: "#" },
-                        { title: "TradingView", desc: "Análisis técnico superior.", meta: ["Herramienta"], type: "AFFILIATE", link: "#" }
+                        { title: "Libertex", desc: "Plataforma de trading móvil y web premiada.", meta: ["Forex/CFDs"], type: "AFFILIATE", link: "https://libertex.fxclub.org/goto/raf2?rid=15199171" },
+                        { title: "eToro", desc: "Social Trading para todos.", meta: ["Social"], type: "AFFILIATE", link: "https://etoro.tw/3XHP9Oz" },
+                        { title: "Binance", desc: "Líder en Criptomonedas.", meta: ["Crypto"], type: "AFFILIATE", link: "https://www.binance.com/referral/earn-together/refer2earn-usdc/claim?hl=es-LA&ref=GRO_28502_B5NQD&utm_source=default" },
+                        { title: "TradingView", desc: "Análisis técnico superior.", meta: ["Herramienta"], type: "AFFILIATE", link: "https://es.tradingview.com/pricing/?share_your_love=dotec_education" }
                     ]
                 }
             },
 
-            // Inicialización
+            // INIT
             init() {
                 this.renderNav();
-                this.loadPage('inversiones'); // Página por defecto
+                this.loadPage('inversiones');
+                this.checkCookies();
                 lucide.createIcons();
             },
 
-            // Renderizado de la Navegación (Optimizado)
+            // RENDER NAV
             renderNav() {
-                const navGrid = document.getElementById('nav-grid');
-                navGrid.innerHTML = this.data.categories.map(cat => `
-                    <button onclick="app.loadPage('${cat.id}')" 
-                            id="btn-${cat.id}"
+                document.getElementById('nav-grid').innerHTML = this.data.categories.map(cat => `
+                    <button onclick="app.loadPage('${cat.id}')" id="btn-${cat.id}"
                             class="card-button bg-gray-800 p-4 rounded-xl border border-gray-700 text-center group focus:outline-none focus:ring-2 focus:ring-indigo-500">
                         <i data-lucide="${cat.icon}" class="w-8 h-8 mx-auto mb-2 text-indigo-400 group-hover:text-white transition-colors"></i>
                         <span class="block font-bold text-white text-sm md:text-base">${cat.label}</span>
@@ -267,63 +271,66 @@
                 `).join('');
             },
 
-            // Lógica Central de Renderizado de Páginas
+            // LOAD PAGE
             loadPage(pageId) {
-                // 1. Actualizar estado visual de botones
+                this.currentCategory = pageId;
+                document.getElementById('search-input').value = ''; // Limpiar búsqueda al cambiar categoría
+                
+                // Actualizar UI Botones
                 document.querySelectorAll('.card-button').forEach(btn => {
                     const isActive = btn.id === `btn-${pageId}`;
-                    btn.className = `card-button p-4 rounded-xl border text-center group transition-all ${
-                        isActive 
-                        ? 'bg-indigo-600 border-indigo-500 ring-2 ring-indigo-500/30' 
-                        : 'bg-gray-800 border-gray-700 hover:bg-gray-750'
-                    }`;
-                    // Cambiar color de icono
+                    btn.className = `card-button p-4 rounded-xl border text-center group transition-all ${isActive ? 'bg-indigo-600 border-indigo-500 ring-2 ring-indigo-500/30' : 'bg-gray-800 border-gray-700 hover:bg-gray-750'}`;
                     const icon = btn.querySelector('i');
                     if(icon) icon.className = `w-8 h-8 mx-auto mb-2 transition-colors ${isActive ? 'text-white' : 'text-indigo-400'}`;
                 });
 
-                // 2. Obtener datos y título
-                const items = this.data.content[pageId];
-                const categoryInfo = this.data.categories.find(c => c.id === pageId);
-
-                // 3. Generar HTML del contenido
-                const contentHTML = `
-                    <div class="p-6 md:p-8">
-                        <header class="mb-8 border-b border-gray-700 pb-4">
-                            <h2 class="text-2xl md:text-3xl font-bold text-white flex items-center">
-                                <i data-lucide="${categoryInfo.icon}" class="w-8 h-8 mr-3 text-indigo-500"></i>
-                                ${categoryInfo.label}
-                            </h2>
-                            <p class="text-gray-400 mt-2 text-sm md:text-base">Explora nuestra selección de recursos de ${categoryInfo.label.toLowerCase()}.</p>
-                        </header>
-                        
-                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                            ${items.map(item => this.createCardHTML(item)).join('')}
-                        </div>
-                    </div>
+                // Título de Sección
+                const cat = this.data.categories.find(c => c.id === pageId);
+                document.getElementById('section-title').innerHTML = `
+                    <i data-lucide="${cat.icon}" class="w-8 h-8 mr-3 text-indigo-500"></i> ${cat.label}
                 `;
 
-                document.getElementById('content-area').innerHTML = contentHTML;
+                this.renderContent(this.data.content[pageId]);
                 lucide.createIcons();
-                
-                // Scroll suave al contenido en móviles
-                if(window.innerWidth < 768) {
-                    document.getElementById('content-area').scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
             },
 
-            // Generador de Tarjetas Genérico (DRY)
+            // FILTRO DE BÚSQUEDA
+            filterResources() {
+                const query = document.getElementById('search-input').value.toLowerCase();
+                const items = this.data.content[this.currentCategory];
+                const filtered = items.filter(item => 
+                    item.title.toLowerCase().includes(query) || 
+                    item.desc.toLowerCase().includes(query)
+                );
+                this.renderContent(filtered);
+            },
+
+            // RENDER CONTENT GRID
+            renderContent(items) {
+                const container = document.getElementById('content-area');
+                if (items.length === 0) {
+                    container.innerHTML = `<div class="p-12 text-center text-gray-500"><p>No se encontraron resultados.</p></div>`;
+                    return;
+                }
+
+                container.innerHTML = `
+                    <div class="p-6 md:p-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        ${items.map(item => this.createCardHTML(item)).join('')}
+                    </div>
+                `;
+                lucide.createIcons();
+            },
+
+            // CARD BUILDER
             createCardHTML(item) {
-                // Configuración según tipo de monetización
                 const config = {
-                    FREE: { color: 'green', badge: 'Gratis', btn: 'Acceder', action: 'alert("Abriendo recurso gratuito...")' },
-                    FREE_DL: { color: 'green', badge: 'Gratis', btn: 'Descargar', icon: 'download', action: 'alert("Iniciando descarga...")' },
+                    FREE: { color: 'green', badge: 'Gratis', btn: 'Acceder', action: 'alert("Abriendo recurso...")' },
+                    FREE_DL: { color: 'green', badge: 'Gratis', btn: 'Descargar', icon: 'download', action: 'alert("Descarga iniciada...")' },
                     PREMIUM: { color: 'yellow', badge: 'Premium', btn: 'Comprar', icon: 'star', action: `window.open('${item.link || '#'}', '_blank')` },
                     DONATION: { color: 'indigo', badge: 'Donación', btn: 'Descargar (Apoyar)', icon: 'heart', action: `app.openModal('${item.title}')` },
                     AFFILIATE: { color: 'teal', badge: 'Recomendado', btn: 'Ver Oferta', icon: 'external-link', action: `window.open('${item.link || '#'}', '_blank')` }
                 }[item.type] || { color: 'gray', badge: 'Info', btn: 'Ver', action: '' };
 
-                // Colores de Tailwind dinámicos
                 const colors = {
                     green: 'bg-green-500/10 text-green-400 border-green-500/20',
                     yellow: 'bg-yellow-500/10 text-yellow-400 border-yellow-500/20',
@@ -345,13 +352,10 @@
                             <h3 class="font-bold text-white text-lg leading-tight">${item.title}</h3>
                             <span class="badge ${colors[config.color]} ml-2 shrink-0">${config.badge}</span>
                         </div>
-                        
                         <p class="text-gray-400 text-sm mb-4 flex-grow">${item.desc}</p>
-                        
                         <div class="flex flex-wrap gap-2 mb-5">
                             ${item.meta.map(m => `<span class="text-xs font-mono bg-gray-900 text-gray-500 px-2 py-1 rounded border border-gray-700">${m}</span>`).join('')}
                         </div>
-
                         <button onclick="${config.action}" class="w-full py-2.5 rounded-lg font-semibold text-sm transition-colors flex items-center justify-center ${btnColors} ${config.color === 'yellow' ? 'text-gray-900' : 'text-white'}">
                             <i data-lucide="${config.icon || 'arrow-right'}" class="w-4 h-4 mr-2"></i> ${config.btn}
                         </button>
@@ -359,73 +363,58 @@
                 `;
             },
 
-            // Funciones del Modal
-            openModal(title) {
-                this.currentResource = title;
-                const modal = document.getElementById('donation-modal');
-                const feedback = document.getElementById('donation-feedback');
-                document.getElementById('donation-input').value = '';
-                feedback.classList.add('hidden');
-                modal.classList.add('active');
+            // MODALS
+            openModal(resource) {
+                this.currentResource = resource;
+                document.getElementById('donation-feedback').classList.add('hidden');
+                document.getElementById('donation-modal').classList.add('active');
+            },
+            closeModal(modalId) {
+                document.getElementById(modalId).classList.remove('active');
             },
             
-            closeModal() {
-                document.getElementById('donation-modal').classList.remove('active');
-            },
-
-            setDonation(amount) {
-                document.getElementById('donation-input').value = amount;
-            },
-
+            // PAGOS
             processPayment(method) {
-                const amount = document.getElementById('donation-input').value;
                 const feedback = document.getElementById('donation-feedback');
-                
-                if(!amount || amount <= 0) {
-                    feedback.textContent = "Por favor ingresa un monto válido.";
-                    feedback.className = "mt-4 text-center text-xs font-bold text-red-400 block";
-                    return;
-                }
-
-                feedback.innerHTML = `<span class="flex items-center justify-center"><i data-lucide="loader-2" class="animate-spin mr-2 w-4 h-4"></i> Conectando con ${method}...</span>`;
+                feedback.innerHTML = `<i data-lucide="loader-2" class="animate-spin inline mr-2"></i> Conectando...`;
                 feedback.className = "mt-4 text-center text-xs font-bold text-indigo-300 block";
+                lucide.createIcons();
 
                 setTimeout(() => {
-                    // LÓGICA DE PAGO REAL
-                    let paymentUrl = '#';
-
-                    if (method === 'PayPal') {
-                        // Construye un enlace dinámico de PayPal.Me
-                        // Si tu usuario es 'juandotec' y el monto es 10, crea: paypal.me/juandotec/10
-                        if (this.paymentConfig.paypalMeUser && this.paymentConfig.paypalMeUser !== 'TU_USUARIO_PAYPAL') {
-                             paymentUrl = `https://paypal.me/${this.paymentConfig.paypalMeUser}/${amount}`;
-                        } else {
-                            alert("¡Falta configurar el usuario de PayPal en el código!");
-                            return;
-                        }
-                    } else if (method === 'MercadoPago') {
-                        // Redirige al enlace de pago de Mercado Pago configurado
-                        if (this.paymentConfig.mercadoPagoLink && !this.paymentConfig.mercadoPagoLink.includes('TU_LINK')) {
-                            paymentUrl = this.paymentConfig.mercadoPagoLink;
-                        } else {
-                            alert("¡Falta configurar el enlace de Mercado Pago en el código!");
-                            return;
-                        }
-                    }
-
-                    window.open(paymentUrl, '_blank');
-                    this.closeModal();
+                    let url = '#';
+                    if (method === 'PayPal') url = `https://paypal.me/${this.paymentConfig.paypalMeUser}`;
+                    if (method === 'MercadoPago') url = this.paymentConfig.mercadoPagoLink;
+                    window.open(url, '_blank');
+                    this.closeModal('donation-modal');
                 }, 1500);
+            },
+
+            // COOKIES
+            checkCookies() {
+                if (!localStorage.getItem('cookiesAccepted')) {
+                    setTimeout(() => document.getElementById('cookie-banner').classList.add('show'), 1000);
+                }
+            },
+            acceptCookies() {
+                localStorage.setItem('cookiesAccepted', 'true');
+                document.getElementById('cookie-banner').classList.remove('show');
+            },
+
+            // LEGALES
+            openLegal(type) {
+                const title = type === 'terms' ? 'Términos y Condiciones' : 'Política de Privacidad';
+                const content = type === 'terms' 
+                    ? '<p>Bienvenido a DOTEC. Al usar este sitio, aceptas que el contenido es educativo y no representa asesoramiento financiero o profesional...</p>'
+                    : '<p>En DOTEC respetamos tu privacidad. No almacenamos datos personales sin tu consentimiento explícito. Las cookies se usan solo para mejorar la navegación...</p>';
+                
+                document.getElementById('legal-title').innerText = title;
+                document.getElementById('legal-content').innerHTML = content;
+                document.getElementById('legal-modal').classList.add('active');
             }
         };
 
-        // Arrancar aplicación cuando el DOM esté listo
         document.addEventListener('DOMContentLoaded', () => app.init());
-        
-        // Cerrar modal con tecla Escape
-        document.addEventListener('keydown', (e) => {
-            if(e.key === 'Escape') app.closeModal();
-        });
+        document.addEventListener('keydown', (e) => { if(e.key === 'Escape') { app.closeModal('donation-modal'); app.closeModal('legal-modal'); } });
     </script>
 </body>
 </html>

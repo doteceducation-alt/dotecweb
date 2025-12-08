@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-6ETB7GM7NB"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <!-- Google tag (gtag.js) - Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6ETB7GM7NB"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
-  gtag('config', 'G-6ETB7GM7NB');
-</script>
+      gtag('config', 'G-6ETB7GM7NB');
+    </script>
+
+    <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2787460707329873"
      crossorigin="anonymous"></script> 
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
@@ -137,6 +140,21 @@
     <!-- FOOTER -->
     <footer class="bg-gray-900 border-t border-gray-800 py-8 mt-auto">
         <div class="max-w-7xl mx-auto px-4 text-center text-gray-500 text-sm">
+            
+            <!-- Redes Sociales (NUEVO) -->
+            <div class="flex justify-center space-x-8 mb-6">
+                <a href="https://www.instagram.com/dotec.cursos.uy" target="_blank" rel="noopener noreferrer" 
+                   class="transform hover:scale-110 transition-transform duration-200 text-gray-400 hover:text-pink-500">
+                    <i data-lucide="instagram" class="w-7 h-7"></i>
+                    <span class="sr-only">Instagram</span>
+                </a>
+                <a href="https://www.facebook.com/DotecCursos" target="_blank" rel="noopener noreferrer" 
+                   class="transform hover:scale-110 transition-transform duration-200 text-gray-400 hover:text-blue-600">
+                    <i data-lucide="facebook" class="w-7 h-7"></i>
+                    <span class="sr-only">Facebook</span>
+                </a>
+            </div>
+
             <p>&copy; 2025 DOTEC. Todos los derechos reservados.</p>
             <div class="mt-4 flex justify-center space-x-6">
                 <button onclick="app.openLegal('terms')" class="hover:text-indigo-400 transition-colors">Términos y Condiciones</button>
@@ -222,6 +240,11 @@
                 ],
                 content: {
                     cursos: [
+                        // NUEVOS CURSOS DE AFILIADOS (UDEMY Y COURSERA)
+                        { title: "Master en Python (Udemy)", desc: "De cero a experto. El curso más completo en español.", meta: ["Best Seller", "70% OFF"], type: "AFFILIATE", link: "#" },
+                        { title: "Soporte TI de Google (Coursera)", desc: "Lanza tu carrera en TI con un certificado profesional.", meta: ["Certificado", "Google"], type: "AFFILIATE", link: "#" },
+                        
+                        // Cursos existentes
                         { title: "JS Moderno (ES6+)", desc: "Fundamentos de JavaScript, promesas y async.", meta: ["Básico", "8h"], type: "FREE" },
                         { title: "Full-Stack Node/Mongo", desc: "Backend y Frontend robusto.", meta: ["Avanzado", "20h"], type: "PREMIUM", link: "https://link.mercadopago.com/TU_LINK_CURSO_FULLSTACK" },
                         { title: "Modelado 3D Blender", desc: "Diseña modelos para imprimir.", meta: ["Intermedio", "12h"], type: "DONATION" },

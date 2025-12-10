@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!-- Google tag (gtag.js) - Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6ETB7GM7NB"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-6ETB7GM7NB');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Específico para Binance -->
+    <title>Compra Bitcoin y Cripto en Binance | Recomendado por DOTEC</title>
+    <meta name="description" content="Regístrate en Binance, el exchange de criptomonedas más grande del mundo. Compra Bitcoin, Ethereum y más con las comisiones más bajas.">
+    
+    <!-- Preconexión y Estilos -->
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        body { font-family: 'Inter', system-ui, -apple-system, sans-serif; }
+        .hero-bg { 
+            /* Fondo oscuro/crypto acorde a Binance */
+            background-image: linear-gradient(rgba(11, 14, 17, 0.9), rgba(11, 14, 17, 0.95)), 
+            url('https://images.unsplash.com/photo-1621416894569-0f39ed31d247?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        .cta-button {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(252, 213, 53, 0.7); } /* Amarillo Binance */
+            70% { box-shadow: 0 0 0 10px rgba(252, 213, 53, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(252, 213, 53, 0); }
+        }
+    </style>
+</head>
+<body class="bg-[#0b0e11] text-gray-100 antialiased">
+
+    <!-- HEADER MINIMALISTA -->
+    <header class="absolute top-0 w-full z-50 py-6">
+        <div class="max-w-7xl mx-auto px-4 flex justify-between items-center">
+            <!-- Logo DOTEC -->
+            <div class="flex items-center space-x-2">
+                <svg class="w-8 h-8 text-indigo-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="currentColor">
+                    <rect x="0" y="0" width="25" height="100" rx="4" />
+                    <rect x="25" y="0" width="50" height="25" rx="4" />
+                    <rect x="25" y="75" width="50" height="25" rx="4" />
+                    <rect x="75" y="25" width="25" height="50" rx="4" />
+                </svg>
+                <span class="font-bold text-xl tracking-tight">DOTEC</span>
+            </div>
+            <!-- Botón Header -->
+            <a href="https://www.binance.com/referral/earn-together/refer2earn-usdc/claim?hl=es-LA&ref=GRO_28502_B5NQD&utm_source=default" target="_blank" 
+               class="hidden md:inline-block bg-[#FCD535] hover:bg-[#eebb00] text-gray-900 font-bold py-2 px-6 rounded-md transition-colors">
+                Registrarse
+            </a>
+        </div>
+    </header>
+
+    <!-- HERO SECTION (CRYPTO) -->
+    <section class="hero-bg h-screen flex items-center justify-center text-center px-4 relative">
+        <div class="max-w-4xl mx-auto mt-16">
+            <span class="inline-block py-1 px-3 rounded text-[#FCD535] border border-[#FCD535]/30 bg-[#FCD535]/10 text-sm font-semibold mb-6">
+                Exchange de Criptomonedas #1 del Mundo
+            </span>
+            <h1 class="text-4xl md:text-6xl font-extrabold text-white tracking-tight mb-6 leading-tight">
+                Compra, Vende y Gana con <span class="text-[#FCD535]">Criptomonedas</span>
+            </h1>
+            <p class="text-lg md:text-xl text-gray-300 mb-10 max-w-2xl mx-auto">
+                Únete a más de 120 millones de usuarios. Opera Bitcoin, Ethereum y cientos de criptomonedas con las comisiones más bajas del mercado.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="https://www.binance.com/referral/earn-together/refer2earn-usdc/claim?hl=es-LA&ref=GRO_28502_B5NQD&utm_source=default" target="_blank" 
+                   class="cta-button bg-[#FCD535] hover:bg-[#eebb00] text-gray-900 text-lg font-bold py-4 px-10 rounded-md transition-transform transform hover:-translate-y-1 flex items-center justify-center">
+                   <i data-lucide="bitcoin" class="w-6 h-6 mr-2"></i> EMPEZAR AHORA
+                </a>
+                <a href="#beneficios" class="bg-gray-800 hover:bg-gray-700 text-gray-300 text-lg font-semibold py-4 px-10 rounded-md border border-gray-700 transition-colors">
+                    Explorar Mercado
+                </a>
+            </div>
+            
+            <p class="mt-6 text-sm text-gray-500">
+                *Registro gratis y seguro. Verificación de identidad requerida.
+            </p>
+        </div>
+    </section>
+
+    <!-- SECCIÓN DE BENEFICIOS (POR QUÉ BINANCE) -->
+    <section id="beneficios" class="py-20 bg-[#181a20]">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-white mb-4">Tu puerta de entrada al mundo Blockchain</h2>
+                <div class="w-20 h-1 bg-[#FCD535] mx-auto rounded"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Variedad -->
+                <div class="bg-[#0b0e11] p-8 rounded-xl border border-gray-800 hover:border-[#FCD535]/50 transition-colors">
+                    <div class="w-14 h-14 bg-[#FCD535]/10 rounded-lg flex items-center justify-center mb-6">
+                        <i data-lucide="layers" class="w-8 h-8 text-[#FCD535]"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">+350 Criptomonedas</h3>
+                    <p class="text-gray-400">Desde Bitcoin y Ethereum hasta las últimas altcoins y tokens del metaverso. Todo en un solo lugar.</p>
+                </div>
+
+                <!-- Seguridad -->
+                <div class="bg-[#0b0e11] p-8 rounded-xl border border-gray-800 hover:border-[#FCD535]/50 transition-colors">
+                    <div class="w-14 h-14 bg-blue-500/10 rounded-lg flex items-center justify-center mb-6">
+                        <i data-lucide="shield" class="w-8 h-8 text-blue-500"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Fondo SAFU</h3>
+                    <p class="text-gray-400">Tus fondos están protegidos por el Fondo de Activos Seguros para Usuarios (SAFU) de Binance.</p>
+                </div>
+
+                <!-- Earn -->
+                <div class="bg-[#0b0e11] p-8 rounded-xl border border-gray-800 hover:border-[#FCD535]/50 transition-colors">
+                    <div class="w-14 h-14 bg-green-500/10 rounded-lg flex items-center justify-center mb-6">
+                        <i data-lucide="trending-up" class="w-8 h-8 text-green-500"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Binance Earn</h3>
+                    <p class="text-gray-400">Pon tus criptomonedas a trabajar. Gana intereses pasivos haciendo staking o ahorros flexibles fácilmente.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CALL TO ACTION FINAL -->
+    <section class="py-20 bg-[#0b0e11] border-t border-gray-800">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">Reclama tus recompensas de bienvenida</h2>
+            <p class="text-gray-400 mb-10 text-lg">
+                Regístrate hoy a través de DOTEC y accede a cupones de comisión y recompensas exclusivas para nuevos usuarios.
+            </p>
+            <a href="https://www.binance.com/referral/earn-together/refer2earn-usdc/claim?hl=es-LA&ref=GRO_28502_B5NQD&utm_source=default" target="_blank" 
+               class="inline-flex items-center bg-[#FCD535] hover:bg-[#eebb00] text-gray-900 font-bold py-4 px-12 rounded-md text-xl transition-all shadow-lg shadow-yellow-500/20">
+                CREAR CUENTA GRATIS <i data-lucide="arrow-right" class="ml-2 w-6 h-6"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- FOOTER SIMPLE -->
+    <footer class="bg-[#181a20] py-8 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="text-gray-500 text-sm mb-4">
+                &copy; 2025 DOTEC. Promoción en asociación con Binance.
+            </p>
+            <div class="flex justify-center space-x-4 text-sm text-gray-600">
+                <a href="#" class="hover:text-gray-400">Privacidad</a>
+                <span>|</span>
+                <a href="#" class="hover:text-gray-400">Términos</a>
+                <span>|</span>
+                <a href="mailto:contacto@dotec.online" class="hover:text-gray-400">Contacto</a>
+            </div>
+            <p class="mt-8 text-xs text-gray-700 max-w-3xl mx-auto leading-relaxed">
+                La inversión en criptoactivos no está regulada, puede no ser adecuada para inversores minoristas y perderse la totalidad del importe invertido. Es importante leer y comprender los riesgos de esta inversión.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

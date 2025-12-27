@@ -126,14 +126,17 @@
 
         <!-- PUBLICIDAD INFERIOR -->
         <aside class="w-full mt-8 min-h-[100px]" aria-label="Publicidad Inferior">
-            <ins class="adsbygoogle"
-                 style="display:block"
-                 data-ad-format="autorelaxed"
-                 data-ad-client="ca-pub-2787460707329873"
-                 data-ad-slot="4876284085"></ins>
-            <script>
-                 (adsbygoogle = window.adsbygoogle || []).push({});
-            </script>
+            <!-- Corrección: Contenedor explícito para evitar error de ancho 0 en AdSense -->
+            <div style="width: 100%; min-width: 300px;">
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-format="autorelaxed"
+                     data-ad-client="ca-pub-2787460707329873"
+                     data-ad-slot="4876284085"></ins>
+                <script>
+                     (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
         </aside>
 
     </main>

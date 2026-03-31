@@ -195,7 +195,16 @@
                 ],
                 motores: [
                     { id: 'm1', title: 'Servomotor SG90', desc: 'Micro servo de 9g. Rango de 180 grados.', price: 120, img: 'https://placehold.co/400x300/312e81/c7d2fe?text=Servo+SG90' },
-                    { id: 'm2', title: 'Motor DC con Reductora (Amarillo)', desc: 'Motor TT ideal para chasis de autos robot (3V-6V).', price: 90, img: 'https://placehold.co/400x300/312e81/c7d2fe?text=Motor+DC' },
+                    
+                    // ---> IMAGEN LOCAL DEL MOTOR TT <---
+                    { 
+                        id: 'm2', 
+                        title: 'Motor DC con Reductora (Amarillo)', 
+                        desc: 'Motor TT ideal para chasis de autos robot (3V-6V).', 
+                        price: 90, 
+                        img: 'img/Motorreductor-con-caja-reductora-6V-1-48-1.jpg' // <-- Ruta local apuntando a la carpeta img que creaste
+                    },
+                    
                     { id: 'm3', title: 'Motor Paso a Paso 28BYJ-48', desc: 'Incluye módulo controlador ULN2003.', price: 210, img: 'https://placehold.co/400x300/312e81/c7d2fe?text=Paso+a+Paso' }
                 ],
                 sensores: [
@@ -271,7 +280,7 @@
                 container.innerHTML = items.map(item => `
                     <article class="product-card bg-gray-800 rounded-2xl overflow-hidden border border-gray-700 hover:border-indigo-500 transition-all hover:shadow-lg flex flex-col">
                         <div class="h-48 overflow-hidden bg-gray-900 relative">
-                            <img src="${item.img}" alt="${item.title}" class="product-img w-full h-full object-cover opacity-90 hover:opacity-100">
+                            <img src="${item.img}" alt="${item.title}" class="product-img w-full h-full object-cover opacity-90 hover:opacity-100" onerror="this.src='https://placehold.co/400x300/312e81/c7d2fe?text=Sin+Imagen'">
                         </div>
                         <div class="p-5 flex flex-col flex-grow">
                             <div class="flex justify-between items-start mb-2 gap-2">
@@ -357,7 +366,7 @@
                 } else {
                     cartItemsContainer.innerHTML = this.cart.map(item => `
                         <div class="flex items-center gap-4 bg-gray-800 p-3 rounded-xl border border-gray-700">
-                            <img src="${item.img}" class="w-16 h-16 rounded-lg object-cover bg-gray-900">
+                            <img src="${item.img}" class="w-16 h-16 rounded-lg object-cover bg-gray-900" onerror="this.src='https://placehold.co/400x300/312e81/c7d2fe?text=Img'">
                             <div class="flex-grow">
                                 <h4 class="text-sm font-bold text-white line-clamp-1">${item.title}</h4>
                                 <div class="text-indigo-400 font-bold text-sm">$${item.price}</div>

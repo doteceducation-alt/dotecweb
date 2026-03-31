@@ -1,456 +1,432 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <!-- Google tag (gtag.js) - Analytics CORREGIDO -->
-    <!-- Se cambió el ID en el 'src' para que coincida con tu medición G-6ETB7GM7NB -->
+    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-6ETB7GM7NB"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
       gtag('config', 'G-6ETB7GM7NB');
     </script>
 
-    <!-- Google AdSense -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2787460707329873"
-     crossorigin="anonymous"></script> 
-    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- SEO & Metadatos -->
-    <title>DOTEC | Recursos de Robótica, Electrónica y Programación</title>
-    <meta name="description" content="Plataforma líder en recursos tecnológicos: cursos de programación, diagramas electrónicos, planos de robots, libros y herramientas de trading. Descargas gratuitas y premium.">
-    <meta name="keywords" content="robotica, arduino, esp32, cursos programación, diagramas electronicos, trading brokers, libros ingenieria">
-    <meta name="author" content="DOTEC">
+    <title>DOTEC Store | Componentes de Robótica y Electrónica</title>
+    <meta name="description" content="Tienda online de componentes electrónicos, placas Arduino, ESP32, motores y sensores para tus proyectos de robótica.">
     
-    <!-- Open Graph -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://dotec.online/">
-    <meta property="og:title" content="DOTEC | Desarrollo con Orientación Tecnológica">
-    <meta property="og:description" content="Recursos gratuitos y premium para makers y desarrolladores. Cursos, planos y más.">
-    <meta property="og:image" content="https://ui-avatars.com/api/?name=DOTEC&background=4f46e5&color=fff&size=512">
-
-    <!-- Preconexión -->
-    <link rel="preconnect" href="https://cdn.tailwindcss.com">
-    <link rel="preconnect" href="https://unpkg.com">
-
     <!-- Tailwind & Lucide -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
 
     <style>
-        body { font-family: 'Inter', system-ui, -apple-system, sans-serif; }
+        body { font-family: 'Inter', system-ui, -apple-system, sans-serif; overflow-x: hidden; }
         .card-button { transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); }
         .card-button:hover { transform: translateY(-4px); box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.4); }
         .card-button:active { transform: translateY(0); }
-        .badge { padding: 4px 10px; border-radius: 9999px; font-size: 0.70rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; }
         
-        /* Modales */
-        .modal { transition: opacity 0.2s ease-in-out, visibility 0.2s; opacity: 0; visibility: hidden; }
+        /* Modales y Carrito */
+        .modal { transition: opacity 0.3s ease-in-out, visibility 0.3s; opacity: 0; visibility: hidden; }
         .modal.active { opacity: 1; visibility: visible; }
         
-        /* Banner de Cookies */
-        .cookie-banner { transform: translateY(100%); transition: transform 0.5s ease-out; }
-        .cookie-banner.show { transform: translateY(0); }
+        .cart-drawer { transform: translateX(100%); transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .cart-drawer.active { transform: translateX(0); }
+
+        /* Toast de Notificación */
+        .toast { transform: translateY(100%); opacity: 0; transition: all 0.3s ease; }
+        .toast.show { transform: translateY(0); opacity: 1; }
+
+        /* Imagen del producto hover */
+        .product-img { transition: transform 0.3s ease; }
+        .product-card:hover .product-img { transform: scale(1.05); }
     </style>
 </head>
-<body class="bg-gray-950 text-gray-100 antialiased min-h-screen flex flex-col">
+<body class="bg-gray-950 text-gray-100 antialiased min-h-screen flex flex-col relative">
 
-    <!-- HEADER -->
+    <!-- HEADER CON CARRITO -->
     <header class="bg-gray-900 border-b border-gray-800 sticky top-0 z-40 backdrop-blur-md bg-opacity-90">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-            <div class="flex items-center justify-center md:justify-start space-x-4">
-                <svg class="w-10 h-10 text-indigo-500 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="currentColor">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <!-- Logo -->
+            <div class="flex items-center space-x-3 cursor-pointer" onclick="window.scrollTo(0,0)">
+                <svg class="w-8 h-8 md:w-10 md:h-10 text-indigo-500 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="currentColor">
                     <rect x="0" y="0" width="25" height="100" rx="4" />
                     <rect x="25" y="0" width="50" height="25" rx="4" />
                     <rect x="25" y="75" width="50" height="25" rx="4" />
                     <rect x="75" y="25" width="25" height="50" rx="4" />
                 </svg>
                 <div class="text-left">
-                    <h1 class="text-2xl md:text-3xl font-extrabold tracking-tight text-white leading-none">DOTEC</h1>
-                    <p class="text-xs md:text-sm font-medium text-indigo-400">Desarrollo con Orientación Tecnológica</p>
+                    <h1 class="text-xl md:text-2xl font-extrabold tracking-tight text-white leading-none">DOTEC <span class="text-indigo-500">Store</span></h1>
+                    <p class="hidden md:block text-xs font-medium text-gray-400">Componentes para Creadores</p>
                 </div>
             </div>
+
+            <!-- Botón Carrito -->
+            <button onclick="app.toggleCart()" class="relative p-2 text-gray-300 hover:text-white bg-gray-800 hover:bg-gray-700 rounded-full transition-colors flex items-center justify-center">
+                <i data-lucide="shopping-cart" class="w-6 h-6"></i>
+                <span id="cart-badge" class="absolute top-0 right-0 -mt-1 -mr-1 bg-pink-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full border-2 border-gray-900 hidden">0</span>
+            </button>
         </div>
     </header>
 
     <!-- MAIN CONTENT -->
-    <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12 w-full">
+    <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-10 w-full">
         
-        <!-- NAVEGACIÓN -->
-        <nav aria-label="Categorías" class="mb-10">
-            <div id="nav-grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-6">
+        <!-- HERO SECTION E-COMMERCE -->
+        <section class="mb-10 rounded-3xl overflow-hidden relative border border-gray-800 shadow-2xl bg-gray-900">
+            <div class="absolute inset-0 opacity-20 bg-[url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80')] bg-cover bg-center mix-blend-overlay"></div>
+            <div class="absolute inset-0 bg-gradient-to-r from-gray-900 via-gray-900/90 to-transparent"></div>
+            
+            <div class="relative z-10 p-8 md:p-12 lg:w-2/3">
+                <span class="inline-block bg-indigo-500 text-white text-xs font-bold px-3 py-1 rounded-full mb-4 uppercase tracking-wider">Nuevos Ingresos</span>
+                <h2 class="text-3xl md:text-5xl font-extrabold text-white leading-tight mb-4">
+                    Todo para tus proyectos de <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-cyan-400">Robótica</span>
+                </h2>
+                <p class="text-gray-300 text-base md:text-lg mb-8 max-w-xl">
+                    Encuentra placas, motores, sensores y kits completos al mejor precio. Envíos a todo el país.
+                </p>
+                <div class="flex gap-4">
+                    <button onclick="document.getElementById('nav-grid').scrollIntoView({behavior: 'smooth'})" class="bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3 px-6 rounded-lg transition-all shadow-lg shadow-indigo-500/30 flex items-center">
+                        <i data-lucide="shopping-bag" class="w-5 h-5 mr-2"></i> Ver Catálogo
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- NAVEGACIÓN DE CATEGORÍAS -->
+        <nav aria-label="Categorías de Productos" class="mb-8">
+            <div id="nav-grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-4">
                 <!-- Generado por JS -->
             </div>
         </nav>
 
-        <!-- PUBLICIDAD SUPERIOR -->
-        <aside class="w-full flex justify-center mb-8 min-h-[90px]" aria-label="Publicidad Superior">
-            <ins class="adsbygoogle"
-                 style="display:inline-block;width:728px;height:90px"
-                 data-ad-client="ca-pub-2787460707329873"
-                 data-ad-slot="8777653034"></ins>
-            <script>
-                 (adsbygoogle = window.adsbygoogle || []).push({});
-            </script>
-        </aside>
-
-        <!-- BARRA DE BÚSQUEDA Y FILTROS -->
-        <div class="flex flex-col md:flex-row justify-between items-center mb-6 gap-4">
-            <h2 id="section-title" class="text-2xl font-bold text-white flex items-center">
+        <!-- BARRA DE BÚSQUEDA -->
+        <div class="flex flex-col md:flex-row justify-between items-center mb-6 gap-4 border-b border-gray-800 pb-4">
+            <h2 id="section-title" class="text-2xl font-bold text-white flex items-center capitalize">
                 <!-- Título dinámico -->
             </h2>
-            <div class="relative w-full md:w-64">
-                <input type="text" 
-                       id="search-input" 
-                       placeholder="Buscar recurso..." 
-                       onkeyup="app.filterResources()"
-                       class="w-full bg-gray-900 border border-gray-700 text-gray-300 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block pl-10 p-2.5">
+            <div class="relative w-full md:w-72">
+                <input type="text" id="search-input" placeholder="Buscar componente..." onkeyup="app.filterProducts()"
+                       class="w-full bg-gray-900 border border-gray-700 text-gray-300 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block pl-10 p-2.5 outline-none transition-colors">
                 <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                     <i data-lucide="search" class="w-4 h-4 text-gray-500"></i>
                 </div>
             </div>
         </div>
 
-        <!-- CONTENIDO DINÁMICO -->
-        <section id="content-area" class="bg-gray-900/50 rounded-2xl border border-gray-800 min-h-[400px]">
-            <div class="flex items-center justify-center h-full p-12 text-gray-500">
-                <div class="text-center">
-                    <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-500 mx-auto mb-4"></div>
-                    <p>Cargando recursos...</p>
-                </div>
-            </div>
+        <!-- GRILLA DE PRODUCTOS -->
+        <section id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 min-h-[400px]">
+            <!-- Generado por JS -->
         </section>
 
-        <!-- PUBLICIDAD INFERIOR -->
-        <aside class="w-full mt-8 min-h-[100px]" aria-label="Publicidad Inferior">
-            <!-- Corrección: Contenedor explícito para evitar error de ancho 0 en AdSense -->
-            <div style="width: 100%; min-width: 300px;">
-                <ins class="adsbygoogle"
-                     style="display:block"
-                     data-ad-format="autorelaxed"
-                     data-ad-client="ca-pub-2787460707329873"
-                     data-ad-slot="4876284085"></ins>
-                <script>
-                     (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
-            </div>
-        </aside>
-
     </main>
+
+    <!-- SIDEBAR DEL CARRITO -->
+    <div id="cart-overlay" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 modal" onclick="app.toggleCart()"></div>
+    <div id="cart-drawer" class="cart-drawer fixed top-0 right-0 h-full w-full sm:w-[400px] bg-gray-900 border-l border-gray-800 z-50 flex flex-col shadow-2xl">
+        <!-- Header Carrito -->
+        <div class="p-5 border-b border-gray-800 flex justify-between items-center bg-gray-900">
+            <h2 class="text-xl font-bold text-white flex items-center">
+                <i data-lucide="shopping-cart" class="w-5 h-5 mr-2 text-indigo-500"></i> Tu Carrito
+            </h2>
+            <button onclick="app.toggleCart()" class="text-gray-400 hover:text-white p-2 rounded-lg hover:bg-gray-800 transition-colors">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+        </div>
+
+        <!-- Items del Carrito -->
+        <div id="cart-items" class="flex-grow overflow-y-auto p-5 space-y-4">
+            <!-- Generado por JS -->
+            <div class="h-full flex flex-col items-center justify-center text-gray-500 space-y-3">
+                <i data-lucide="shopping-bag" class="w-12 h-12 text-gray-700"></i>
+                <p>Tu carrito está vacío</p>
+            </div>
+        </div>
+
+        <!-- Footer Carrito (Totales y Checkout) -->
+        <div class="p-5 border-t border-gray-800 bg-gray-900">
+            <div class="flex justify-between items-center mb-4 text-lg">
+                <span class="text-gray-400 font-medium">Total:</span>
+                <span id="cart-total" class="font-bold text-white text-2xl">$0</span>
+            </div>
+            <button onclick="app.checkout()" id="checkout-btn" disabled class="w-full bg-green-600 hover:bg-green-500 disabled:bg-gray-700 disabled:text-gray-500 disabled:cursor-not-allowed text-white font-bold py-3.5 rounded-xl transition-all flex justify-center items-center shadow-lg">
+                <i data-lucide="message-circle" class="w-5 h-5 mr-2"></i> Pedir por WhatsApp
+            </button>
+            <p class="text-center text-xs text-gray-500 mt-3">Pagos seguros vía MercadoPago o Transferencia.</p>
+        </div>
+    </div>
+
+    <!-- TOAST NOTIFICACIÓN -->
+    <div id="toast" class="toast fixed bottom-5 left-1/2 transform -translate-x-1/2 bg-gray-800 border border-gray-700 text-white px-6 py-3 rounded-full shadow-2xl flex items-center z-50">
+        <i data-lucide="check-circle-2" class="w-5 h-5 text-green-500 mr-2"></i>
+        <span id="toast-msg" class="text-sm font-medium">Producto añadido</span>
+    </div>
 
     <!-- FOOTER -->
     <footer class="bg-gray-900 border-t border-gray-800 py-8 mt-auto">
         <div class="max-w-7xl mx-auto px-4 text-center text-gray-500 text-sm">
-            
-            <!-- Redes Sociales -->
-            <div class="flex justify-center space-x-8 mb-6">
-                <a href="https://www.instagram.com/dotec.cursos.uy" target="_blank" rel="noopener noreferrer" 
-                   class="transform hover:scale-110 transition-transform duration-200 text-gray-400 hover:text-pink-500">
-                    <i data-lucide="instagram" class="w-7 h-7"></i>
-                    <span class="sr-only">Instagram</span>
-                </a>
-                <a href="https://www.facebook.com/DotecCursos" target="_blank" rel="noopener noreferrer" 
-                   class="transform hover:scale-110 transition-transform duration-200 text-gray-400 hover:text-blue-600">
-                    <i data-lucide="facebook" class="w-7 h-7"></i>
-                    <span class="sr-only">Facebook</span>
-                </a>
-            </div>
-
-            <p>&copy; 2025 DOTEC. Todos los derechos reservados.</p>
-            <div class="mt-4 flex justify-center space-x-6">
-                <button onclick="app.openLegal('terms')" class="hover:text-indigo-400 transition-colors">Términos y Condiciones</button>
-                <button onclick="app.openLegal('privacy')" class="hover:text-indigo-400 transition-colors">Política de Privacidad</button>
-                <a href="mailto:contacto@dotec.online" class="hover:text-indigo-400 transition-colors">Contacto</a>
-            </div>
+            <p>&copy; 2025 DOTEC Store. Todos los derechos reservados.</p>
         </div>
     </footer>
-
-    <!-- MODAL DE DONACIONES -->
-    <div id="donation-modal" class="modal fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm" role="dialog" aria-modal="true">
-        <div class="bg-gray-800 rounded-2xl shadow-2xl w-full max-w-md p-6 border border-gray-700 relative overflow-hidden">
-            <div class="absolute top-0 right-0 -mt-4 -mr-4 w-24 h-24 bg-indigo-500/20 rounded-full blur-2xl"></div>
-            <div class="flex justify-between items-start mb-6 relative z-10">
-                <h3 class="text-xl font-bold text-white flex items-center">
-                    <i data-lucide="heart" class="w-5 h-5 mr-2 text-pink-500 fill-current"></i> Apoya a DOTEC
-                </h3>
-                <button onclick="app.closeModal('donation-modal')" class="text-gray-400 hover:text-white p-1 rounded-full hover:bg-gray-700 transition-colors">
-                    <i data-lucide="x" class="w-5 h-5"></i>
-                </button>
-            </div>
-            <p class="text-gray-300 text-sm mb-6 leading-relaxed">Tu aporte mantiene los servidores activos y nos permite crear nuevos modelos robóticos gratuitos.</p>
-            
-            <!-- Botones de Donación -->
-            <div class="space-y-3">
-                <button onclick="app.processPayment('MercadoPago')" class="w-full py-3 rounded-lg text-white font-semibold bg-[#009ee3] hover:bg-[#008ad0] shadow-lg shadow-blue-400/30 transition-all flex items-center justify-center">
-                    <i data-lucide="smartphone" class="w-4 h-4 mr-2"></i> Donar con Mercado Pago
-                </button>
-                <button onclick="app.processPayment('PayPal')" class="w-full py-3 rounded-lg text-white font-semibold bg-[#003087] hover:bg-[#00256b] transition-colors flex items-center justify-center">
-                    <i data-lucide="wallet" class="w-4 h-4 mr-2"></i> Donar con PayPal
-                </button>
-            </div>
-            <div id="donation-feedback" class="mt-4 text-center text-xs font-medium hidden"></div>
-        </div>
-    </div>
-
-    <!-- MODAL LEGAL (GENÉRICO) -->
-    <div id="legal-modal" class="modal fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm" role="dialog">
-        <div class="bg-gray-800 rounded-2xl shadow-2xl w-full max-w-2xl p-8 border border-gray-700 relative max-h-[80vh] overflow-y-auto">
-            <div class="flex justify-between items-start mb-4">
-                <h3 id="legal-title" class="text-2xl font-bold text-white"></h3>
-                <button onclick="app.closeModal('legal-modal')" class="text-gray-400 hover:text-white"><i data-lucide="x" class="w-6 h-6"></i></button>
-            </div>
-            <div id="legal-content" class="text-gray-300 text-sm space-y-4 leading-relaxed"></div>
-        </div>
-    </div>
-
-    <!-- BANNER DE COOKIES -->
-    <div id="cookie-banner" class="cookie-banner fixed bottom-0 left-0 right-0 bg-gray-900 border-t border-indigo-500 p-4 z-50 shadow-[0_-4px_20px_rgba(0,0,0,0.5)]">
-        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-            <p class="text-gray-300 text-sm text-center sm:text-left">
-                Usamos cookies para mejorar tu experiencia y mostrar publicidad relevante. Al continuar navegando, aceptas nuestra política de privacidad.
-            </p>
-            <div class="flex space-x-3">
-                <button onclick="app.acceptCookies()" class="bg-indigo-600 hover:bg-indigo-500 text-white px-6 py-2 rounded-lg text-sm font-bold transition-colors">
-                    Aceptar
-                </button>
-            </div>
-        </div>
-    </div>
 
     <!-- APP LOGIC -->
     <script>
         const app = {
-            currentResource: '',
-            currentCategory: 'inversiones',
+            currentCategory: 'placas',
+            cart: [],
+            whatsappNumber: '59897495328', // <-- ¡CAMBIA ESTE NÚMERO POR EL TUYO! (Código país + número)
             
-            // CONFIGURACIÓN DE PAGOS
-            paymentConfig: {
-                paypalMeUser: 'DotecRivera', 
-                mercadoPagoLink: 'https://link.mercadopago.com.uy/dotecservicios'
-            },
+            // CATÁLOGO DE PRODUCTOS (Reemplaza las imágenes 'placehold.co' por fotos reales cuando las tengas)
+            categories: [
+                { id: 'placas', label: 'Placas', icon: 'cpu', color: 'indigo' },
+                { id: 'motores', label: 'Motores', icon: 'zap', color: 'indigo' },
+                { id: 'sensores', label: 'Sensores', icon: 'radio', color: 'indigo' },
+                { id: 'accesorios', label: 'Accesorios', icon: 'plug', color: 'indigo' },
+                { id: 'kits', label: 'Kits', icon: 'package', color: 'indigo' }
+            ],
             
-            // DATOS
-            data: {
-                categories: [
-                    { id: 'inversiones', label: 'Inversiones', icon: 'trending-up', sub: 'Brokers & Trading', color: 'indigo' },
-                    { id: 'cursos', label: 'Cursos', icon: 'graduation-cap', sub: 'Aprende hoy', color: 'indigo' },
-                    { id: 'diagramas', label: 'Diagramas', icon: 'layout-grid', sub: 'Circuitos listos', color: 'gray' },
-                    { id: 'robots', label: 'Robots', icon: 'bot', sub: 'Modelos 3D', color: 'gray' },
-                    { id: 'libros', label: 'Libros', icon: 'book-open', sub: 'Biblioteca', color: 'gray' },
-                    { id: 'software', label: 'Software', icon: 'wrench', sub: 'Herramientas', color: 'gray' }
+            products: {
+                placas: [
+                    { id: 'p1', title: 'Arduino UNO R3 Compatible', desc: 'Placa microcontroladora ATmega328P. Incluye cable USB.', price: 450, img: 'https://placehold.co/400x300/1e1b4b/818cf8?text=Arduino+UNO' },
+                    { id: 'p2', title: 'ESP32 WiFi & Bluetooth', desc: 'Placa de desarrollo IoT de doble núcleo con conectividad inalámbrica.', price: 380, img: 'https://placehold.co/400x300/1e1b4b/818cf8?text=ESP32' },
+                    { id: 'p3', title: 'Arduino Nano V3', desc: 'Versión compacta del Arduino UNO. Ideal para protoboard.', price: 290, img: 'https://placehold.co/400x300/1e1b4b/818cf8?text=Arduino+Nano' },
+                    { id: 'p4', title: 'Raspberry Pi Pico', desc: 'Microcontrolador RP2040 de alto rendimiento y bajo costo.', price: 350, img: 'https://placehold.co/400x300/1e1b4b/818cf8?text=RPi+Pico' }
                 ],
-                content: {
-                    cursos: [
-                        // NUEVOS CURSOS DE AFILIADOS (UDEMY Y COURSERA)
-                        { title: "Master en Python (Udemy)", desc: "De cero a experto. El curso más completo en español.", meta: ["Best Seller", "70% OFF"], type: "AFFILIATE", link: "#" },
-                        { title: "Soporte TI de Google (Coursera)", desc: "Lanza tu carrera en TI con un certificado profesional.", meta: ["Certificado", "Google"], type: "AFFILIATE", link: "#" },
-                        
-                        // Cursos existentes
-                        { title: "JS Moderno (ES6+)", desc: "Fundamentos de JavaScript, promesas y async.", meta: ["Básico", "8h"], type: "FREE" },
-                        { title: "Full-Stack Node/Mongo", desc: "Backend y Frontend robusto.", meta: ["Avanzado", "20h"], type: "PREMIUM", link: "https://link.mercadopago.com/TU_LINK_CURSO_FULLSTACK" },
-                        { title: "Modelado 3D Blender", desc: "Diseña modelos para imprimir.", meta: ["Intermedio", "12h"], type: "DONATION" },
-                        { title: "Arduino Básico", desc: "IoT y robótica inicial.", meta: ["Básico", "6h"], type: "FREE" }
-                    ],
-                    diagramas: [
-                        { title: "Fuente 5V Regulada", desc: "Esquemático y PCB LM7805.", meta: ["Fácil", "PDF/Fritzing"], type: "FREE" },
-                        { title: "Amp Audio Clase A", desc: "Circuito de baja potencia.", meta: ["Medio", "EAGLE"], type: "DONATION" },
-                        { title: "Driver Motor L298N", desc: "Puente H para control DC.", meta: ["Fácil", "SVG"], type: "FREE" },
-                        { title: "Oscilador 555", desc: "Generador de pulsos astable.", meta: ["Fácil", "PDF"], type: "DONATION" }
-                    ],
-                    robots: [
-                        { title: "Brazo 2GDL Arduino", desc: "Impresión 3D + Servos.", meta: ["Arduino UNO", "Impresión 3D"], type: "FREE" },
-                        { title: "Brazo IoT ESP32", desc: "Control WiFi remoto.", meta: ["ESP32", "Web App"], type: "DONATION" },
-                        { title: "Robot Trazador", desc: "Móvil educativo.", meta: ["Micro:bit", "Sensores"], type: "FREE" },
-                        { title: "Clasificador Color", desc: "5GDL con sensor TCS3200.", meta: ["Mega", "Alto Torque"], type: "PREMIUM", link: "#" }
-                    ],
-                    libros: [
-                        { title: "Intro a la Robótica", desc: "John J. Craig. La biblia de la mecánica.", meta: ["Teoría"], type: "AFFILIATE", link: "#" },
-                        { title: "ROS 2 in 5 Days", desc: "Lentin Joseph. Guía práctica rápida.", meta: ["ROS 2"], type: "AFFILIATE", link: "#" },
-                        { title: "Arduino Básico", desc: "Oscar D.P. Proyectos iniciales.", meta: ["Arduino"], type: "AFFILIATE", link: "#" },
-                        { title: "ESP32 For Dummies", desc: "IoT Development fácil.", meta: ["IoT"], type: "AFFILIATE", link: "#" }
-                    ],
-                    software: [
-                        { title: "VS Code", desc: "Editor de código esencial.", meta: ["IDE"], type: "FREE_DL", icon: "code" },
-                        { title: "Arduino IDE 2.0", desc: "Entorno oficial.", meta: ["Dev"], type: "FREE_DL", icon: "cpu" },
-                        { title: "Fusion 360", desc: "CAD/CAM Profesional.", meta: ["Diseño"], type: "AFFILIATE", icon: "box", link: "#" },
-                        { title: "PyCharm Pro", desc: "IDE Python avanzado.", meta: ["Python"], type: "AFFILIATE", icon: "terminal", link: "#" }
-                    ],
-                    inversiones: [
-                        { title: "Libertex", desc: "Plataforma de trading móvil y web premiada.", meta: ["Forex/CFDs"], type: "AFFILIATE", link: "https://libertex.fxclub.org/goto/raf2?rid=15199171" },
-                        { title: "eToro", desc: "Social Trading para todos.", meta: ["Social"], type: "AFFILIATE", link: "https://etoro.tw/3XHP9Oz" },
-                        { title: "Binance", desc: "Líder en Criptomonedas.", meta: ["Crypto"], type: "AFFILIATE", link: "https://www.binance.com/referral/earn-together/refer2earn-usdc/claim?hl=es-LA&ref=GRO_28502_B5NQD&utm_source=default" },
-                        { title: "TradingView", desc: "Análisis técnico superior.", meta: ["Herramienta"], type: "AFFILIATE", link: "https://es.tradingview.com/pricing/?share_your_love=dotec_education" }
-                    ]
-                }
+                motores: [
+                    { id: 'm1', title: 'Servomotor SG90', desc: 'Micro servo de 9g. Rango de 180 grados.', price: 120, img: 'https://placehold.co/400x300/312e81/c7d2fe?text=Servo+SG90' },
+                    { id: 'm2', title: 'Motor DC con Reductora (Amarillo)', desc: 'Motor TT ideal para chasis de autos robot (3V-6V).', price: 90, img: 'https://placehold.co/400x300/312e81/c7d2fe?text=Motor+DC' },
+                    { id: 'm3', title: 'Motor Paso a Paso 28BYJ-48', desc: 'Incluye módulo controlador ULN2003.', price: 210, img: 'https://placehold.co/400x300/312e81/c7d2fe?text=Paso+a+Paso' }
+                ],
+                sensores: [
+                    { id: 's1', title: 'Sensor Ultrasónico HC-SR04', desc: 'Medidor de distancia por ultrasonido (2cm - 400cm).', price: 110, img: 'https://placehold.co/400x300/064e3b/6ee7b7?text=HC-SR04' },
+                    { id: 's2', title: 'Sensor Infrarrojo TCRT5000', desc: 'Módulo seguidor de línea u obstáculo.', price: 60, img: 'https://placehold.co/400x300/064e3b/6ee7b7?text=TCRT5000' },
+                    { id: 's3', title: 'Módulo Bluetooth HC-05', desc: 'Transceptor Bluetooth maestro/esclavo para control remoto.', price: 280, img: 'https://placehold.co/400x300/064e3b/6ee7b7?text=HC-05' }
+                ],
+                accesorios: [
+                    { id: 'a1', title: 'Protoboard 400 Puntos', desc: 'Placa de pruebas sin soldadura.', price: 150, img: 'https://placehold.co/400x300/701a75/f0abfc?text=Protoboard' },
+                    { id: 'a2', title: 'Cables Jumper Macho-Macho', desc: 'Tira de 40 cables Dupont de 20cm.', price: 120, img: 'https://placehold.co/400x300/701a75/f0abfc?text=Jumpers+MM' },
+                    { id: 'a3', title: 'Portapilas 4xAA', desc: 'Soporte para 4 baterías AA.', price: 50, img: 'https://placehold.co/400x300/701a75/f0abfc?text=Portapilas' }
+                ],
+                kits: [
+                    { id: 'k1', title: 'Kit Robótica Básico', desc: 'Chasis 2WD, Arduino UNO, Motor Shield y Sensor Ultrasónico.', price: 1850, img: 'https://placehold.co/400x300/7c2d12/fdba74?text=Kit+Coche' },
+                    { id: 'k2', title: 'Kit Principiante Arduino', desc: 'Arduino UNO, Protoboard, LEDs, Resistencias, Jumpers y Sensores básicos.', price: 1450, img: 'https://placehold.co/400x300/7c2d12/fdba74?text=Kit+Inicio' }
+                ]
             },
 
             // INIT
             init() {
                 this.renderNav();
-                this.loadPage('inversiones');
-                this.checkCookies();
+                this.loadCategory('placas');
+                this.loadCart();
                 lucide.createIcons();
             },
 
-            // RENDER NAV
+            // RENDER NAVEGACIÓN
             renderNav() {
-                document.getElementById('nav-grid').innerHTML = this.data.categories.map(cat => `
-                    <button onclick="app.loadPage('${cat.id}')" id="btn-${cat.id}"
-                            class="card-button bg-gray-800 p-4 rounded-xl border border-gray-700 text-center group focus:outline-none focus:ring-2 focus:ring-indigo-500">
-                        <i data-lucide="${cat.icon}" class="w-8 h-8 mx-auto mb-2 text-indigo-400 group-hover:text-white transition-colors"></i>
-                        <span class="block font-bold text-white text-sm md:text-base">${cat.label}</span>
-                        <span class="text-xs text-gray-500 group-hover:text-gray-300 block mt-1">${cat.sub}</span>
+                document.getElementById('nav-grid').innerHTML = this.categories.map(cat => `
+                    <button onclick="app.loadCategory('${cat.id}')" id="btn-${cat.id}"
+                            class="card-button bg-gray-800 p-3 rounded-xl border border-gray-700 text-center group">
+                        <i data-lucide="${cat.icon}" class="w-6 h-6 md:w-8 md:h-8 mx-auto mb-2 text-indigo-400 group-hover:text-white transition-colors"></i>
+                        <span class="block font-bold text-white text-xs md:text-sm">${cat.label}</span>
                     </button>
                 `).join('');
             },
 
-            // LOAD PAGE
-            loadPage(pageId) {
-                this.currentCategory = pageId;
-                document.getElementById('search-input').value = ''; // Limpiar búsqueda al cambiar categoría
+            // CARGAR CATEGORÍA
+            loadCategory(catId) {
+                this.currentCategory = catId;
+                document.getElementById('search-input').value = '';
                 
-                // Actualizar UI Botones
+                // Actualizar estilo de botones
                 document.querySelectorAll('.card-button').forEach(btn => {
-                    const isActive = btn.id === `btn-${pageId}`;
-                    btn.className = `card-button p-4 rounded-xl border text-center group transition-all ${isActive ? 'bg-indigo-600 border-indigo-500 ring-2 ring-indigo-500/30' : 'bg-gray-800 border-gray-700 hover:bg-gray-750'}`;
+                    const isActive = btn.id === `btn-${catId}`;
+                    btn.className = `card-button p-3 rounded-xl border text-center group transition-all ${isActive ? 'bg-indigo-600 border-indigo-500' : 'bg-gray-800 border-gray-700 hover:bg-gray-750'}`;
                     const icon = btn.querySelector('i');
-                    if(icon) icon.className = `w-8 h-8 mx-auto mb-2 transition-colors ${isActive ? 'text-white' : 'text-indigo-400'}`;
+                    if(icon) icon.className = `w-6 h-6 md:w-8 md:h-8 mx-auto mb-2 transition-colors ${isActive ? 'text-white' : 'text-indigo-400'}`;
                 });
 
-                // Título de Sección
-                const cat = this.data.categories.find(c => c.id === pageId);
-                document.getElementById('section-title').innerHTML = `
-                    <i data-lucide="${cat.icon}" class="w-8 h-8 mr-3 text-indigo-500"></i> ${cat.label}
-                `;
+                const catLabel = this.categories.find(c => c.id === catId).label;
+                document.getElementById('section-title').innerHTML = `${catLabel}`;
 
-                this.renderContent(this.data.content[pageId]);
-                lucide.createIcons();
+                this.renderProducts(this.products[catId]);
             },
 
-            // FILTRO DE BÚSQUEDA
-            filterResources() {
+            // FILTRAR PRODUCTOS
+            filterProducts() {
                 const query = document.getElementById('search-input').value.toLowerCase();
-                const items = this.data.content[this.currentCategory];
-                const filtered = items.filter(item => 
-                    item.title.toLowerCase().includes(query) || 
-                    item.desc.toLowerCase().includes(query)
-                );
-                this.renderContent(filtered);
+                const items = this.products[this.currentCategory];
+                const filtered = items.filter(item => item.title.toLowerCase().includes(query) || item.desc.toLowerCase().includes(query));
+                this.renderProducts(filtered);
             },
 
-            // RENDER CONTENT GRID
-            renderContent(items) {
-                const container = document.getElementById('content-area');
+            // RENDERIZAR PRODUCTOS
+            renderProducts(items) {
+                const container = document.getElementById('products-grid');
                 if (items.length === 0) {
-                    container.innerHTML = `<div class="p-12 text-center text-gray-500"><p>No se encontraron resultados.</p></div>`;
+                    container.innerHTML = `<div class="col-span-full py-12 text-center text-gray-500"><p>No se encontraron productos.</p></div>`;
                     return;
                 }
 
-                container.innerHTML = `
-                    <div class="p-6 md:p-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        ${items.map(item => this.createCardHTML(item)).join('')}
-                    </div>
-                `;
-                lucide.createIcons();
-            },
-
-            // CARD BUILDER
-            createCardHTML(item) {
-                const config = {
-                    FREE: { color: 'green', badge: 'Gratis', btn: 'Acceder', action: 'alert("Abriendo recurso...")' },
-                    FREE_DL: { color: 'green', badge: 'Gratis', btn: 'Descargar', icon: 'download', action: 'alert("Descarga iniciada...")' },
-                    PREMIUM: { color: 'yellow', badge: 'Premium', btn: 'Comprar', icon: 'star', action: `window.open('${item.link || '#'}', '_blank')` },
-                    DONATION: { color: 'indigo', badge: 'Donación', btn: 'Descargar (Apoyar)', icon: 'heart', action: `app.openModal('${item.title}')` },
-                    AFFILIATE: { color: 'teal', badge: 'Recomendado', btn: 'Ver Oferta', icon: 'external-link', action: `window.open('${item.link || '#'}', '_blank')` }
-                }[item.type] || { color: 'gray', badge: 'Info', btn: 'Ver', action: '' };
-
-                const colors = {
-                    green: 'bg-green-500/10 text-green-400 border-green-500/20',
-                    yellow: 'bg-yellow-500/10 text-yellow-400 border-yellow-500/20',
-                    indigo: 'bg-indigo-500/10 text-indigo-400 border-indigo-500/20',
-                    teal: 'bg-teal-500/10 text-teal-400 border-teal-500/20',
-                    gray: 'bg-gray-700 text-gray-300 border-gray-600'
-                };
-                
-                const btnColors = {
-                    green: 'bg-green-600 hover:bg-green-500',
-                    yellow: 'bg-yellow-600 hover:bg-yellow-500 text-black',
-                    indigo: 'bg-indigo-600 hover:bg-indigo-500',
-                    teal: 'bg-teal-600 hover:bg-teal-500',
-                }[config.color] || 'bg-gray-600';
-
-                return `
-                    <article class="bg-gray-800 rounded-xl p-5 border border-gray-700 hover:border-${config.color}-500 transition-all hover:shadow-lg flex flex-col h-full">
-                        <div class="flex justify-between items-start mb-3">
-                            <h3 class="font-bold text-white text-lg leading-tight">${item.title}</h3>
-                            <span class="badge ${colors[config.color]} ml-2 shrink-0">${config.badge}</span>
+                container.innerHTML = items.map(item => `
+                    <article class="product-card bg-gray-800 rounded-2xl overflow-hidden border border-gray-700 hover:border-indigo-500 transition-all hover:shadow-lg flex flex-col">
+                        <div class="h-48 overflow-hidden bg-gray-900 relative">
+                            <img src="${item.img}" alt="${item.title}" class="product-img w-full h-full object-cover opacity-90 hover:opacity-100">
                         </div>
-                        <p class="text-gray-400 text-sm mb-4 flex-grow">${item.desc}</p>
-                        <div class="flex flex-wrap gap-2 mb-5">
-                            ${item.meta.map(m => `<span class="text-xs font-mono bg-gray-900 text-gray-500 px-2 py-1 rounded border border-gray-700">${m}</span>`).join('')}
+                        <div class="p-5 flex flex-col flex-grow">
+                            <div class="flex justify-between items-start mb-2 gap-2">
+                                <h3 class="font-bold text-white text-lg leading-tight flex-grow">${item.title}</h3>
+                            </div>
+                            <p class="text-gray-400 text-sm mb-4 line-clamp-2">${item.desc}</p>
+                            <div class="mt-auto flex items-center justify-between">
+                                <span class="text-xl font-extrabold text-white">$${item.price}</span>
+                                <button onclick="app.addToCart('${item.id}', '${this.currentCategory}')" class="bg-indigo-600 hover:bg-indigo-500 text-white p-2.5 rounded-lg transition-colors" title="Añadir al carrito">
+                                    <i data-lucide="plus" class="w-5 h-5"></i>
+                                </button>
+                            </div>
                         </div>
-                        <button onclick="${config.action}" class="w-full py-2.5 rounded-lg font-semibold text-sm transition-colors flex items-center justify-center ${btnColors} ${config.color === 'yellow' ? 'text-gray-900' : 'text-white'}">
-                            <i data-lucide="${config.icon || 'arrow-right'}" class="w-4 h-4 mr-2"></i> ${config.btn}
-                        </button>
                     </article>
-                `;
-            },
-
-            // MODALS
-            openModal(resource) {
-                this.currentResource = resource;
-                document.getElementById('donation-feedback').classList.add('hidden');
-                document.getElementById('donation-modal').classList.add('active');
-            },
-            closeModal(modalId) {
-                document.getElementById(modalId).classList.remove('active');
-            },
-            
-            // PAGOS
-            processPayment(method) {
-                const feedback = document.getElementById('donation-feedback');
-                feedback.innerHTML = `<i data-lucide="loader-2" class="animate-spin inline mr-2"></i> Conectando...`;
-                feedback.className = "mt-4 text-center text-xs font-bold text-indigo-300 block";
+                `).join('');
                 lucide.createIcons();
-
-                setTimeout(() => {
-                    let url = '#';
-                    if (method === 'PayPal') url = `https://paypal.me/${this.paymentConfig.paypalMeUser}`;
-                    if (method === 'MercadoPago') url = this.paymentConfig.mercadoPagoLink;
-                    window.open(url, '_blank');
-                    this.closeModal('donation-modal');
-                }, 1500);
             },
 
-            // COOKIES
-            checkCookies() {
-                if (!localStorage.getItem('cookiesAccepted')) {
-                    setTimeout(() => document.getElementById('cookie-banner').classList.add('show'), 1000);
+            // --- LÓGICA DEL CARRITO ---
+
+            addToCart(productId, categoryId) {
+                const product = this.products[categoryId].find(p => p.id === productId);
+                const existingItem = this.cart.find(item => item.id === productId);
+
+                if (existingItem) {
+                    existingItem.qty++;
+                } else {
+                    this.cart.push({ ...product, qty: 1 });
+                }
+                
+                this.saveCart();
+                this.updateCartUI();
+                this.showToast('¡Agregado al carrito!');
+            },
+
+            removeFromCart(productId) {
+                this.cart = this.cart.filter(item => item.id !== productId);
+                this.saveCart();
+                this.updateCartUI();
+            },
+
+            changeQty(productId, delta) {
+                const item = this.cart.find(i => i.id === productId);
+                if (item) {
+                    item.qty += delta;
+                    if (item.qty <= 0) this.removeFromCart(productId);
+                    else {
+                        this.saveCart();
+                        this.updateCartUI();
+                    }
                 }
             },
-            acceptCookies() {
-                localStorage.setItem('cookiesAccepted', 'true');
-                document.getElementById('cookie-banner').classList.remove('show');
+
+            updateCartUI() {
+                const cartItemsContainer = document.getElementById('cart-items');
+                const cartBadge = document.getElementById('cart-badge');
+                const cartTotal = document.getElementById('cart-total');
+                const checkoutBtn = document.getElementById('checkout-btn');
+
+                // Update Badge
+                const totalItems = this.cart.reduce((sum, item) => sum + item.qty, 0);
+                if (totalItems > 0) {
+                    cartBadge.textContent = totalItems;
+                    cartBadge.classList.remove('hidden');
+                } else {
+                    cartBadge.classList.add('hidden');
+                }
+
+                // Update Total
+                const totalAmount = this.cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+                cartTotal.textContent = `$${totalAmount}`;
+
+                // Update Button State
+                checkoutBtn.disabled = this.cart.length === 0;
+
+                // Render Items
+                if (this.cart.length === 0) {
+                    cartItemsContainer.innerHTML = `
+                        <div class="h-full flex flex-col items-center justify-center text-gray-500 space-y-3 pt-10">
+                            <i data-lucide="shopping-bag" class="w-12 h-12 text-gray-600"></i>
+                            <p>Tu carrito está vacío</p>
+                        </div>`;
+                } else {
+                    cartItemsContainer.innerHTML = this.cart.map(item => `
+                        <div class="flex items-center gap-4 bg-gray-800 p-3 rounded-xl border border-gray-700">
+                            <img src="${item.img}" class="w-16 h-16 rounded-lg object-cover bg-gray-900">
+                            <div class="flex-grow">
+                                <h4 class="text-sm font-bold text-white line-clamp-1">${item.title}</h4>
+                                <div class="text-indigo-400 font-bold text-sm">$${item.price}</div>
+                                <div class="flex items-center gap-3 mt-2">
+                                    <button onclick="app.changeQty('${item.id}', -1)" class="w-6 h-6 flex items-center justify-center bg-gray-700 hover:bg-gray-600 rounded text-white">-</button>
+                                    <span class="text-sm font-medium text-white">${item.qty}</span>
+                                    <button onclick="app.changeQty('${item.id}', 1)" class="w-6 h-6 flex items-center justify-center bg-gray-700 hover:bg-gray-600 rounded text-white">+</button>
+                                </div>
+                            </div>
+                            <button onclick="app.removeFromCart('${item.id}')" class="text-gray-500 hover:text-red-400 p-2">
+                                <i data-lucide="trash-2" class="w-5 h-5"></i>
+                            </button>
+                        </div>
+                    `).join('');
+                }
+                lucide.createIcons();
             },
 
-            // LEGALES
-            openLegal(type) {
-                const title = type === 'terms' ? 'Términos y Condiciones' : 'Política de Privacidad';
-                const content = type === 'terms' 
-                    ? '<p>Bienvenido a DOTEC. Al usar este sitio, aceptas que el contenido es educativo y no representa asesoramiento financiero o profesional...</p>'
-                    : '<p>En DOTEC respetamos tu privacidad. No almacenamos datos personales sin tu consentimiento explícito. Las cookies se usan solo para mejorar la navegación...</p>';
+            toggleCart() {
+                document.getElementById('cart-drawer').classList.toggle('active');
+                document.getElementById('cart-overlay').classList.toggle('active');
+            },
+
+            // PERSISTENCIA
+            saveCart() {
+                localStorage.setItem('dotec_cart', JSON.stringify(this.cart));
+            },
+            
+            loadCart() {
+                const savedCart = localStorage.getItem('dotec_cart');
+                if (savedCart) {
+                    this.cart = JSON.parse(savedCart);
+                    this.updateCartUI();
+                }
+            },
+
+            // CHECKOUT POR WHATSAPP
+            checkout() {
+                if (this.cart.length === 0) return;
+
+                let message = "Hola *DOTEC Store* 👋, quiero realizar el siguiente pedido:\n\n";
                 
-                document.getElementById('legal-title').innerText = title;
-                document.getElementById('legal-content').innerHTML = content;
-                document.getElementById('legal-modal').classList.add('active');
+                this.cart.forEach(item => {
+                    message += `▪ ${item.qty}x ${item.title} ($${item.price * item.qty})\n`;
+                });
+
+                const totalAmount = this.cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+                message += `\n*Total a pagar: $${totalAmount}*\n\n`;
+                message += `Por favor indíquenme los métodos de pago y envío. ¡Gracias!`;
+
+                // Codificar para URL
+                const encodedMessage = encodeURIComponent(message);
+                const whatsappUrl = `https://wa.me/${this.whatsappNumber}?text=${encodedMessage}`;
+                
+                // Abrir WhatsApp
+                window.open(whatsappUrl, '_blank');
+            },
+
+            // TOAST (Notificaciones visuales)
+            showToast(msg) {
+                const toast = document.getElementById('toast');
+                document.getElementById('toast-msg').textContent = msg;
+                toast.classList.add('show');
+                setTimeout(() => toast.classList.remove('show'), 2500);
             }
         };
 
+        // Inicializar aplicación
         document.addEventListener('DOMContentLoaded', () => app.init());
-        document.addEventListener('keydown', (e) => { if(e.key === 'Escape') { app.closeModal('donation-modal'); app.closeModal('legal-modal'); } });
     </script>
 </body>
 </html>

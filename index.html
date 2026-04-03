@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-6ETB7GM7NB"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -12,9 +13,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
+    <!-- SEO & Metadatos -->
     <title>DOTEC | Robótica, Componentes y Proyectos</title>
     <meta name="description" content="Tienda online de componentes electrónicos y portafolio de proyectos de robótica educativa.">
     
+    <!-- Tailwind & Lucide -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
 
@@ -44,14 +47,17 @@
 </head>
 <body class="bg-gray-950 text-gray-100 antialiased min-h-screen flex flex-col relative">
 
+    <!-- HEADER -->
     <header class="bg-gray-900 border-b border-gray-800 sticky top-0 z-40 backdrop-blur-md bg-opacity-90">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
             
             <div class="flex items-center gap-4">
+                <!-- Botón Menú Lateral -->
                 <button onclick="app.toggleSidebar()" class="p-2 text-gray-300 hover:text-white bg-gray-800 hover:bg-gray-700 rounded-lg transition-colors flex items-center justify-center">
                     <i data-lucide="menu" class="w-6 h-6"></i>
                 </button>
                 
+                <!-- Logo -->
                 <div class="flex items-center space-x-3 cursor-pointer" onclick="app.switchView('store')">
                     <svg class="w-8 h-8 md:w-10 md:h-10 text-indigo-500 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="currentColor">
                         <rect x="0" y="0" width="25" height="100" rx="4" />
@@ -65,6 +71,7 @@
                 </div>
             </div>
 
+            <!-- Botón Carrito -->
             <button onclick="app.toggleCart()" class="relative p-2 text-gray-300 hover:text-white bg-gray-800 hover:bg-gray-700 rounded-full transition-colors flex items-center justify-center">
                 <i data-lucide="shopping-cart" class="w-6 h-6"></i>
                 <span id="cart-badge" class="absolute top-0 right-0 -mt-1 -mr-1 bg-pink-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full border-2 border-gray-900 hidden">0</span>
@@ -72,6 +79,7 @@
         </div>
     </header>
 
+    <!-- SIDEBAR (MENÚ LATERAL) -->
     <div id="sidebar-overlay" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 overlay" onclick="app.toggleSidebar()"></div>
     <aside id="sidebar-drawer" class="drawer drawer-left fixed top-0 left-0 h-full w-64 md:w-72 bg-gray-900 border-r border-gray-800 z-50 flex flex-col shadow-2xl">
         <div class="p-6 border-b border-gray-800 flex justify-between items-center bg-gray-900">
@@ -101,8 +109,10 @@
         </div>
     </aside>
 
+    <!-- CONTENEDOR PRINCIPAL -->
     <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-10 w-full relative">
         
+        <!-- ==================== VISTA: TIENDA ==================== -->
         <div id="view-store" class="view-section">
             <section class="mb-10 rounded-3xl overflow-hidden relative border border-gray-800 shadow-2xl bg-gray-900">
                 <div class="absolute inset-0 opacity-20 bg-[url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80')] bg-cover bg-center mix-blend-overlay"></div>
@@ -118,7 +128,8 @@
 
             <nav aria-label="Categorías de Productos" class="mb-8">
                 <div id="nav-grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-4">
-                    </div>
+                    <!-- Generado por JS -->
+                </div>
             </nav>
 
             <div class="flex flex-col md:flex-row justify-between items-center mb-6 gap-4 border-b border-gray-800 pb-4">
@@ -133,18 +144,22 @@
             </div>
 
             <section id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 min-h-[400px]">
-                </section>
+                <!-- Generado por JS -->
+            </section>
         </div>
 
+        <!-- ==================== VISTA: PROYECTOS ==================== -->
         <div id="view-projects" class="view-section hidden">
             <div class="mb-8 border-b border-gray-800 pb-6">
                 <h2 class="text-3xl font-extrabold text-white mb-2">Proyectos Elaborados</h2>
                 <p class="text-gray-400">Explora algunos de los desarrollos de software y prototipos de robótica creados por DOTEC.</p>
             </div>
             <div id="projects-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
-                </div>
+                <!-- Generado por JS -->
+            </div>
         </div>
 
+        <!-- ==================== VISTA: QUIÉNES SOMOS ==================== -->
         <div id="view-about" class="view-section hidden">
             <div class="bg-gray-800/50 rounded-3xl border border-gray-700 p-8 md:p-12">
                 <div class="flex flex-col md:flex-row items-center gap-10">
@@ -170,6 +185,7 @@
             </div>
         </div>
 
+        <!-- ==================== VISTA: CONTACTO ==================== -->
         <div id="view-contact" class="view-section hidden">
             <div class="max-w-4xl mx-auto bg-gray-800 rounded-2xl border border-gray-700 p-8">
                 <h2 class="text-2xl font-bold text-white mb-6 text-center">Ponte en contacto</h2>
@@ -266,6 +282,7 @@
         </div>
     </div>
 
+    <!-- SIDEBAR DEL CARRITO -->
     <div id="cart-overlay" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 overlay" onclick="app.toggleCart()"></div>
     <div id="cart-drawer" class="drawer drawer-right fixed top-0 right-0 h-full w-full sm:w-[400px] bg-gray-900 border-l border-gray-800 z-50 flex flex-col shadow-2xl">
         <div class="p-5 border-b border-gray-800 flex justify-between items-center bg-gray-900">
@@ -288,11 +305,13 @@
         </div>
     </div>
 
+    <!-- TOAST NOTIFICACIÓN -->
     <div id="toast" class="toast fixed bottom-5 left-1/2 transform -translate-x-1/2 bg-gray-800 border border-gray-700 text-white px-6 py-3 rounded-full shadow-2xl flex items-center z-50">
         <i data-lucide="check-circle-2" class="w-5 h-5 text-green-500 mr-2"></i>
         <span id="toast-msg" class="text-sm font-medium">Acción realizada</span>
     </div>
 
+    <!-- FOOTER -->
     <footer class="bg-gray-900 border-t border-gray-800 py-8 mt-auto">
         <div class="max-w-7xl mx-auto px-4 text-center text-gray-500 text-sm flex flex-col md:flex-row justify-between items-center">
             <p>&copy; 2026 DOTEC. Todos los derechos reservados.</p>
@@ -304,44 +323,51 @@
         </div>
     </footer>
 
+    <!-- APP LOGIC -->
     <script>
         const app = {
             currentCategory: 'placas',
             cart: [],
-            whatsappNumber: '59897495328', 
+            whatsappNumber: '59897495328', // ¡Número correcto mantenido!
             
-            // CATÁLOGO DE PRODUCTOS
             categories: [
-                { id: 'placas', label: 'Placas', icon: 'cpu' },
-                { id: 'motores', label: 'Motores', icon: 'zap' },
-                { id: 'sensores', label: 'Sensores', icon: 'radio' },
-                { id: 'accesorios', label: 'Accesorios', icon: 'plug' },
-                { id: 'kits', label: 'Kits', icon: 'package' }
+                { id: 'placas', label: 'Placas', icon: 'cpu', color: 'indigo' },
+                { id: 'motores', label: 'Motores', icon: 'zap', color: 'indigo' },
+                { id: 'sensores', label: 'Sensores', icon: 'radio', color: 'indigo' },
+                { id: 'accesorios', label: 'Accesorios', icon: 'plug', color: 'indigo' },
+                { id: 'kits', label: 'Kits', icon: 'package', color: 'indigo' }
             ],
             
+            // TUS PRODUCTOS Y PRECIOS ORIGINALES INTACTOS:
             products: {
                 placas: [
-                    { id: 'p1', title: 'Arduino UNO R3 Compatible', desc: 'Placa microcontroladora ATmega328P. Incluye cable USB.', price: 450, img: 'img/Arduino-Uno.jpg' },
-                    { id: 'p2', title: 'ESP32 WiFi & Bluetooth', desc: 'Placa de desarrollo IoT de doble núcleo.', price: 380, img: 'img/Esp-32.jpg' },
-                    { id: 'p3', title: 'Arduino Nano V3', desc: 'Versión compacta del Arduino UNO. Ideal para protoboard.', price: 290, img: 'img/Arduino-nano.jpg' },
-                    { id: 'p4', title: 'Raspberry Pi Pico', desc: 'Microcontrolador RP2040 de alto rendimiento.', price: 350, img: 'img/RASPBERRY-PI-RP2040.jpg' }
+                    { id: 'p1', title: 'Arduino UNO R3 Compatible', desc: 'Placa microcontroladora ATmega328P. Incluye cable USB.', price: 1000, img: 'img/Arduino-Uno.jpg' },
+                    { id: 'p2', title: 'ESP32 WiFi & Bluetooth', desc: 'Placa de desarrollo IoT de doble núcleo con conectividad inalámbrica.', price: 1200, img: 'img/Esp-32.jpg' },
+                    { id: 'p3', title: 'Arduino Nano V3', desc: 'Versión compacta del Arduino UNO. Ideal para protoboard.', price: 900, img: 'img/Arduino-nano.jpg' },
+                    { id: 'p4', title: 'Raspberry Pi Pico', desc: 'Microcontrolador RP2040 de alto rendimiento y bajo costo.', price: 950, img: 'img/RASPBERRY-PI-RP2040.jpg' }
                 ],
                 motores: [
-                    { id: 'm1', title: 'Servomotor SG90', desc: 'Micro servo de 9g. Rango de 180 grados.', price: 120, img: 'img/servomotor-sg90.jpg' },
-                    { id: 'm2', title: 'Motor DC con Reductora', desc: 'Motor TT ideal para chasis de autos robot.', price: 90, img: 'img/Motorreductor-con-caja-reductora-6V-1-48-1.jpg' }
+                    { id: 'm1', title: 'Servomotor SG90', desc: 'Micro servo de 9g. Rango de 180 grados.', price: 600, img: 'img/servomotor-sg90.jpg' },
+                    { id: 'm2', title: 'Motor DC con Reductora (Amarillo)', desc: 'Motor TT ideal para chasis de autos robot (3V-6V).', price: 350, img: 'img/Motorreductor-con-caja-reductora-6V-1-48-1.jpg' },
+                    { id: 'm3', title: 'Motor Paso a Paso 28BYJ-48', desc: 'Incluye módulo controlador ULN2003.', price: 700, img: 'img/Motor28BYJ-48IncluyeULN2003..jpg' }
                 ],
                 sensores: [
-                    { id: 's1', title: 'Sensor Ultrasónico HC-SR04', desc: 'Medidor de distancia por ultrasonido.', price: 110, img: 'https://placehold.co/400x300/064e3b/6ee7b7?text=HC-SR04' }
+                    { id: 's1', title: 'Sensor Ultrasónico HC-SR04', desc: 'Medidor de distancia por ultrasonido (2cm - 400cm).', price: 400, img: 'img/MUltrasonicoHS-SR04.jpg' },
+                    { id: 's2', title: 'Sensor Infrarrojo TCRT5000', desc: 'Módulo seguidor de línea u obstáculo.', price: 200, img: 'img/infrarrojoTCRT5000.jpg' },
+                    { id: 's3', title: 'Módulo Bluetooth HC-05', desc: 'Transceptor Bluetooth maestro/esclavo para control remoto.', price: 800, img: 'img/hc05modulo-bluetooth.jpg' }
                 ],
                 accesorios: [
-                    { id: 'a1', title: 'Protoboard 400 Puntos', desc: 'Placa de pruebas sin soldadura.', price: 150, img: 'https://placehold.co/400x300/701a75/f0abfc?text=Protoboard' }
+                    { id: 'a1', title: 'Protoboard 400 Puntos', desc: 'Placa de pruebas sin soldadura.', price: 500, img: 'img/Protoboard400.jpg' },
+                    { id: 'a2', title: 'Cables Jumper Macho-Macho', desc: 'Tira de 40 cables Dupont de 20cm.', price: 350, img: 'img/Cablesdupontmachomacho.jpg' },
+                    { id: 'a3', title: 'Portapilas 4xAA', desc: 'Soporte para 4 baterías AA.', price: 150, img: 'img/portapilasx4.jpg' }
                 ],
                 kits: [
-                    { id: 'k1', title: 'Kit Robótica Básico', desc: 'Chasis 2WD, Arduino, Motores y Sensores.', price: 1850, img: 'https://placehold.co/400x300/7c2d12/fdba74?text=Kit+Coche' }
+                    { id: 'k1', title: 'Kit Robótica Básico', desc: 'Chasis 2WD, Arduino UNO, Motor Shield y Sensor Ultrasónico.', price: 1850, img: 'https://placehold.co/400x300/7c2d12/fdba74?text=Kit+Coche' },
+                    { id: 'k2', title: 'Kit Principiante Arduino', desc: 'Arduino UNO, Protoboard, LEDs, Resistencias, Jumpers y Sensores básicos.', price: 1450, img: 'https://placehold.co/400x300/7c2d12/fdba74?text=Kit+Inicio' }
                 ]
             },
 
-            // PORTAFOLIO DE PROYECTOS PRECARGADOS
+            // PORTAFOLIO DE PROYECTOS
             projects: [
                 {
                     title: 'Rover Navegante (LEGO SPIKE)',
@@ -373,14 +399,10 @@
                 lucide.createIcons();
             },
 
-            // GESTIÓN DE VISTAS (PÁGINAS)
+            // GESTIÓN DE VISTAS
             switchView(viewId) {
-                // Ocultar todas las secciones
                 document.querySelectorAll('.view-section').forEach(el => el.classList.add('hidden'));
-                // Mostrar la sección solicitada
                 document.getElementById(`view-${viewId}`).classList.remove('hidden');
-                
-                // Cerrar sidebar y hacer scroll arriba
                 this.closeSidebar();
                 window.scrollTo({ top: 0, behavior: 'smooth' });
                 lucide.createIcons();
@@ -398,7 +420,7 @@
                 document.getElementById('sidebar-overlay').classList.remove('active');
             },
 
-            // LÓGICA DEL MODAL DE CORREO
+            // MODAL DE CORREO Y ENVÍO
             openEmailModal() {
                 document.getElementById('email-modal').classList.add('active');
             },
@@ -418,10 +440,10 @@
                 
                 this.closeEmailModal();
                 this.showToast('Abriendo tu gestor de correos...');
-                e.target.reset(); // Limpia el formulario para la próxima vez
+                e.target.reset(); 
             },
 
-            // RENDER PROYECTOS
+            // RENDER DE PROYECTOS (PORTAFOLIO)
             renderProjects() {
                 const container = document.getElementById('projects-container');
                 container.innerHTML = this.projects.map(p => `
@@ -440,7 +462,7 @@
                 `).join('');
             },
 
-            // LOGICA EXISTENTE DE LA TIENDA
+            // TIENDA: NAVEGACIÓN Y CARGA
             renderNav() {
                 document.getElementById('nav-grid').innerHTML = this.categories.map(cat => `
                     <button onclick="app.loadCategory('${cat.id}')" id="btn-${cat.id}"
@@ -454,36 +476,47 @@
             loadCategory(catId) {
                 this.currentCategory = catId;
                 document.getElementById('search-input').value = '';
+                
                 document.querySelectorAll('.card-button').forEach(btn => {
                     const isActive = btn.id === `btn-${catId}`;
                     btn.className = `card-button p-3 rounded-xl border text-center group transition-all ${isActive ? 'bg-indigo-600 border-indigo-500' : 'bg-gray-800 border-gray-700 hover:bg-gray-750'}`;
                     const icon = btn.querySelector('i');
                     if(icon) icon.className = `w-6 h-6 md:w-8 md:h-8 mx-auto mb-2 transition-colors ${isActive ? 'text-white' : 'text-indigo-400'}`;
                 });
-                document.getElementById('section-title').innerHTML = this.categories.find(c => c.id === catId).label;
+
+                const catLabel = this.categories.find(c => c.id === catId).label;
+                document.getElementById('section-title').innerHTML = `${catLabel}`;
+
                 this.renderProducts(this.products[catId]);
             },
 
             filterProducts() {
                 const query = document.getElementById('search-input').value.toLowerCase();
                 const items = this.products[this.currentCategory];
-                this.renderProducts(items.filter(i => i.title.toLowerCase().includes(query) || i.desc.toLowerCase().includes(query)));
+                const filtered = items.filter(item => item.title.toLowerCase().includes(query) || item.desc.toLowerCase().includes(query));
+                this.renderProducts(filtered);
             },
 
             renderProducts(items) {
                 const container = document.getElementById('products-grid');
-                if (items.length === 0) return container.innerHTML = `<div class="col-span-full py-12 text-center text-gray-500">No se encontraron productos.</div>`;
+                if (items.length === 0) {
+                    container.innerHTML = `<div class="col-span-full py-12 text-center text-gray-500"><p>No se encontraron productos.</p></div>`;
+                    return;
+                }
+
                 container.innerHTML = items.map(item => `
                     <article class="product-card bg-gray-800 rounded-2xl overflow-hidden border border-gray-700 hover:border-indigo-500 transition-all hover:shadow-lg flex flex-col">
                         <div class="h-48 overflow-hidden bg-gray-900 relative">
                             <img src="${item.img}" alt="${item.title}" class="product-img w-full h-full object-cover opacity-90 hover:opacity-100" onerror="this.src='https://placehold.co/400x300/312e81/c7d2fe?text=Sin+Imagen'">
                         </div>
                         <div class="p-5 flex flex-col flex-grow">
-                            <h3 class="font-bold text-white text-lg leading-tight mb-2">${item.title}</h3>
+                            <div class="flex justify-between items-start mb-2 gap-2">
+                                <h3 class="font-bold text-white text-lg leading-tight flex-grow">${item.title}</h3>
+                            </div>
                             <p class="text-gray-400 text-sm mb-4 line-clamp-2">${item.desc}</p>
                             <div class="mt-auto flex items-center justify-between">
                                 <span class="text-xl font-extrabold text-white">$${item.price}</span>
-                                <button onclick="app.addToCart('${item.id}', '${this.currentCategory}')" class="bg-indigo-600 hover:bg-indigo-500 text-white p-2.5 rounded-lg transition-colors">
+                                <button onclick="app.addToCart('${item.id}', '${this.currentCategory}')" class="bg-indigo-600 hover:bg-indigo-500 text-white p-2.5 rounded-lg transition-colors" title="Añadir al carrito">
                                     <i data-lucide="plus" class="w-5 h-5"></i>
                                 </button>
                             </div>
@@ -493,38 +526,67 @@
                 lucide.createIcons();
             },
 
-            // CARRITO (Mantenido intacto)
-            toggleCart() {
-                document.getElementById('cart-drawer').classList.toggle('active');
-                document.getElementById('cart-overlay').classList.toggle('active');
-            },
-            
+            // --- LÓGICA DEL CARRITO ---
             addToCart(productId, categoryId) {
-                const p = this.products[categoryId].find(x => x.id === productId);
-                const ex = this.cart.find(i => i.id === productId);
-                ex ? ex.qty++ : this.cart.push({ ...p, qty: 1 });
-                this.saveCart(); this.updateCartUI(); this.showToast('¡Agregado al carrito!');
-            },
-            removeFromCart(productId) {
-                this.cart = this.cart.filter(i => i.id !== productId);
-                this.saveCart(); this.updateCartUI();
-            },
-            changeQty(id, delta) {
-                const i = this.cart.find(x => x.id === id);
-                if (i) { i.qty += delta; i.qty <= 0 ? this.removeFromCart(id) : (this.saveCart(), this.updateCartUI()); }
-            },
-            updateCartUI() {
-                const totalItems = this.cart.reduce((s, i) => s + i.qty, 0);
-                const totalAmt = this.cart.reduce((s, i) => s + (i.price * i.qty), 0);
-                
-                const badge = document.getElementById('cart-badge');
-                totalItems > 0 ? (badge.textContent = totalItems, badge.classList.remove('hidden')) : badge.classList.add('hidden');
-                document.getElementById('cart-total').textContent = `$${totalAmt}`;
-                document.getElementById('checkout-btn').disabled = this.cart.length === 0;
+                const product = this.products[categoryId].find(p => p.id === productId);
+                const existingItem = this.cart.find(item => item.id === productId);
 
-                document.getElementById('cart-items').innerHTML = this.cart.length === 0 ? 
-                    `<div class="h-full flex flex-col items-center justify-center text-gray-500 space-y-3 pt-10"><i data-lucide="shopping-bag" class="w-12 h-12 text-gray-600"></i><p>Tu carrito está vacío</p></div>` :
-                    this.cart.map(item => `
+                if (existingItem) {
+                    existingItem.qty++;
+                } else {
+                    this.cart.push({ ...product, qty: 1 });
+                }
+                
+                this.saveCart();
+                this.updateCartUI();
+                this.showToast('¡Agregado al carrito!');
+            },
+
+            removeFromCart(productId) {
+                this.cart = this.cart.filter(item => item.id !== productId);
+                this.saveCart();
+                this.updateCartUI();
+            },
+
+            changeQty(productId, delta) {
+                const item = this.cart.find(i => i.id === productId);
+                if (item) {
+                    item.qty += delta;
+                    if (item.qty <= 0) this.removeFromCart(productId);
+                    else {
+                        this.saveCart();
+                        this.updateCartUI();
+                    }
+                }
+            },
+
+            updateCartUI() {
+                const cartItemsContainer = document.getElementById('cart-items');
+                const cartBadge = document.getElementById('cart-badge');
+                const cartTotal = document.getElementById('cart-total');
+                const checkoutBtn = document.getElementById('checkout-btn');
+
+                const totalItems = this.cart.reduce((sum, item) => sum + item.qty, 0);
+                if (totalItems > 0) {
+                    cartBadge.textContent = totalItems;
+                    cartBadge.classList.remove('hidden');
+                } else {
+                    cartBadge.classList.add('hidden');
+                }
+
+                const totalAmount = this.cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+                cartTotal.textContent = `$${totalAmount}`;
+
+                checkoutBtn.disabled = this.cart.length === 0;
+
+                if (this.cart.length === 0) {
+                    cartItemsContainer.innerHTML = `
+                        <div class="h-full flex flex-col items-center justify-center text-gray-500 space-y-3 pt-10">
+                            <i data-lucide="shopping-bag" class="w-12 h-12 text-gray-600"></i>
+                            <p>Tu carrito está vacío</p>
+                        </div>`;
+                } else {
+                    cartItemsContainer.innerHTML = this.cart.map(item => `
                         <div class="flex items-center gap-4 bg-gray-800 p-3 rounded-xl border border-gray-700">
                             <img src="${item.img}" class="w-16 h-16 rounded-lg object-cover bg-gray-900" onerror="this.src='https://placehold.co/400x300/312e81/c7d2fe?text=Img'">
                             <div class="flex-grow">
@@ -536,25 +598,56 @@
                                     <button onclick="app.changeQty('${item.id}', 1)" class="w-6 h-6 flex items-center justify-center bg-gray-700 hover:bg-gray-600 rounded text-white">+</button>
                                 </div>
                             </div>
-                            <button onclick="app.removeFromCart('${item.id}')" class="text-gray-500 hover:text-red-400 p-2"><i data-lucide="trash-2" class="w-5 h-5"></i></button>
+                            <button onclick="app.removeFromCart('${item.id}')" class="text-gray-500 hover:text-red-400 p-2">
+                                <i data-lucide="trash-2" class="w-5 h-5"></i>
+                            </button>
                         </div>
                     `).join('');
+                }
                 lucide.createIcons();
             },
-            saveCart() { localStorage.setItem('dotec_cart', JSON.stringify(this.cart)); },
-            loadCart() { const s = localStorage.getItem('dotec_cart'); if (s) { this.cart = JSON.parse(s); this.updateCartUI(); } },
+
+            toggleCart() {
+                document.getElementById('cart-drawer').classList.toggle('active');
+                document.getElementById('cart-overlay').classList.toggle('active');
+            },
+
+            saveCart() {
+                localStorage.setItem('dotec_cart', JSON.stringify(this.cart));
+            },
+            
+            loadCart() {
+                const savedCart = localStorage.getItem('dotec_cart');
+                if (savedCart) {
+                    this.cart = JSON.parse(savedCart);
+                    this.updateCartUI();
+                }
+            },
+
             checkout() {
                 if (this.cart.length === 0) return;
-                let msg = "Hola *DOTEC Store* 👋, quiero realizar el siguiente pedido:\n\n";
-                this.cart.forEach(i => msg += `▪ ${i.qty}x ${i.title} ($${i.price * i.qty})\n`);
-                msg += `\n*Total a pagar: $${this.cart.reduce((s, i) => s + (i.price * i.qty), 0)}*\n\nPor favor indíquenme los métodos de pago y envío. ¡Gracias!`;
-                window.open(`https://wa.me/${this.whatsappNumber}?text=${encodeURIComponent(msg)}`, '_blank');
+
+                let message = "Hola *DOTEC Store* 👋, quiero realizar el siguiente pedido:\n\n";
+                
+                this.cart.forEach(item => {
+                    message += `▪ ${item.qty}x ${item.title} ($${item.price * item.qty})\n`;
+                });
+
+                const totalAmount = this.cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+                message += `\n*Total a pagar: $${totalAmount}*\n\n`;
+                message += `Por favor indíquenme los métodos de pago y envío. ¡Gracias!`;
+
+                const encodedMessage = encodeURIComponent(message);
+                const whatsappUrl = `https://wa.me/${this.whatsappNumber}?text=${encodedMessage}`;
+                
+                window.open(whatsappUrl, '_blank');
             },
+
             showToast(msg) {
-                const t = document.getElementById('toast');
+                const toast = document.getElementById('toast');
                 document.getElementById('toast-msg').textContent = msg;
-                t.classList.add('show');
-                setTimeout(() => t.classList.remove('show'), 2500);
+                toast.classList.add('show');
+                setTimeout(() => toast.classList.remove('show'), 2500);
             }
         };
 
